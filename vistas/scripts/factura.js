@@ -14,9 +14,12 @@ function init(){
 //Función limpiar
 function limpiar()
 {
-	$("#nombre").val("");
+	$("#idfactura").val("");
+	$("#idpaciente").val("");
+	$("#fecha").val("");
+	$("#monto").val("");
 	$("#descripcion").val("");
-	$("#idcategoria").val("");
+	
 }
 
 //Función mostrar formulario
@@ -61,7 +64,7 @@ function listar()
 		        ],
 		"ajax":
 				{
-					url: '../ajax/categoria.php?op=listar',
+					url: '../ajax/factura.php?op=listar',
 					type : "get",
 					dataType : "json",						
 					error: function(e){
@@ -82,7 +85,7 @@ function guardaryeditar(e)
 	var formData = new FormData($("#formulario")[0]);
 
 	$.ajax({
-		url: "../ajax/categoria.php?op=guardaryeditar",
+		url: "../ajax/factura.php?op=guardaryeditar",
 	    type: "POST",
 	    data: formData,
 	    contentType: false,
@@ -99,27 +102,29 @@ function guardaryeditar(e)
 	limpiar();
 }
 
-function mostrar(idcategoria)
+function mostrar(idfactura)
 {
-	$.post("../ajax/categoria.php?op=mostrar",{idcategoria : idcategoria}, function(data, status)
+	$.post("../ajax/factura.php?op=mostrar",{idfactura : idfactura}, function(data, status)
 	{
 		data = JSON.parse(data);		
 		mostrarform(true);
 
-		$("#nombre").val(data.nombre);
-		$("#descripcion").val(data.descripcion);
- 		$("#idcategoria").val(data.idcategoria);
+		$("#idfactura").val(data.ID_Factura);
+		$("#idpaciente").val(data.ID_Paciente);
+		$("#fecha").val(data.Fecha);
+		$("#monto").val(data.Monto);
+		$("#descripcion").val(data.Descripcion);
 
  	})
 }
 
 //Función para desactivar registros
-function desactivar(idcategoria)
+function desactivar(idfactura)
 {
-	bootbox.confirm("¿Está Seguro de desactivar la Categoría?", function(result){
+	bootbox.confirm("¿Está Seguro de desactivar la Factura?", function(result){
 		if(result)
         {
-        	$.post("../ajax/categoria.php?op=desactivar", {idcategoria : idcategoria}, function(e){
+        	$.post("../ajax/factura.php?op=desactivar", {idfactura : idfactura}, function(e){
         		bootbox.alert(e);
 	            tabla.ajax.reload();
         	});	
@@ -128,12 +133,12 @@ function desactivar(idcategoria)
 }
 
 //Función para activar registros
-function activar(idcategoria)
+function activar(idfactura)
 {
-	bootbox.confirm("¿Está Seguro de activar la Categoría?", function(result){
+	bootbox.confirm("¿Está Seguro de activar la Factura?", function(result){
 		if(result)
         {
-        	$.post("../ajax/categoria.php?op=activar", {idcategoria : idcategoria}, function(e){
+        	$.post("../ajax/factura.php?op=activar", {idfactura : idfactura}, function(e){
         		bootbox.alert(e);
 	            tabla.ajax.reload();
         	});	

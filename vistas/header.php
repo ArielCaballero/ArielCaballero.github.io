@@ -100,7 +100,7 @@
               </a>
               <ul class="treeview-menu">
                 <li><a href="articulo.php"><i class="fa fa-circle-o"></i> Artículos</a></li>
-                <li><a href="categoria.php"><i class="fa fa-circle-o"></i> Categorías</a></li>
+                <li><a href="factura.php"><i class="fa fa-circle-o"></i> Factura</a></li>
               </ul>
             </li>
             
@@ -112,6 +112,8 @@
               </a>
               <ul class="treeview-menu">
                 <li><a href="historia.php"><i class="fa fa-circle-o"></i> Historia Ocular</a></li>
+                <li><a href="exp_funcional.php"><i class="fa fa-circle-o"></i> Exploracion Funcional</a></li>
+                <li><a href="exp_fisica.php"><i class="fa fa-circle-o"></i> Exploracion Fisica</a></li>
                 <li><a href="proveedor.php"><i class="fa fa-circle-o"></i> Proveedores</a></li>
               </ul>
             </li>
