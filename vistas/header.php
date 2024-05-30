@@ -111,7 +111,7 @@
                  <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="ingreso.php"><i class="fa fa-circle-o"></i> Ingresos</a></li>
+                <li><a href="historia.php"><i class="fa fa-circle-o"></i> Historia Ocular</a></li>
                 <li><a href="proveedor.php"><i class="fa fa-circle-o"></i> Proveedores</a></li>
               </ul>
             </li>
