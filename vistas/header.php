@@ -124,6 +124,7 @@
               <ul class="treeview-menu">
                 <li><a href="receta.php"><i class="fa fa-circle-o"></i> Receta</a></li>
                 <li><a href="ojo.php"><i class="fa fa-circle-o"></i> Ojo</a></li>
+                <li><a href="lente.php"><i class="fa fa-circle-o"></i> Lentes de Contacto</a></li>
                 <li><a href="cliente.php"><i class="fa fa-circle-o"></i> Clientes</a></li>
               </ul>
             </li>                       
