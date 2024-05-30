@@ -32,15 +32,17 @@ CREATE TABLE `doctor` (
   `ID_Usuario` int(11) DEFAULT NULL,
   `Especialidad` varchar(100) DEFAULT NULL,
   `RFC` varchar(13) DEFAULT NULL,
-  `Cedula_Profesional` varchar(20) DEFAULT NULL
+  `Cedula_Profesional` varchar(20) DEFAULT NULL,
+  `Condicion` tinyint(1)
+  
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `doctor`
 --
 
-INSERT INTO `doctor` (`ID_Doctor`, `ID_Usuario`, `Especialidad`, `RFC`, `Cedula_Profesional`) VALUES
-(1, 2, 'Oftalmología', 'LOAA760101XYZ', '1234567');
+INSERT INTO `doctor` (`ID_Doctor`, `ID_Usuario`, `Especialidad`, `RFC`, `Cedula_Profesional`, `Condicion`) VALUES
+(1, 2, 'Oftalmología', 'LOAA760101XYZ', '1234567', '1');
 
 -- --------------------------------------------------------
 
@@ -95,7 +97,8 @@ CREATE TABLE `factura` (
   `ID_Paciente` int(11) DEFAULT NULL,
   `Fecha` date NOT NULL,
   `Monto` decimal(10,2) NOT NULL,
-  `Descripcion` text DEFAULT NULL
+  `Descripcion` text DEFAULT NULL,
+  `Condicion` tinyint(1)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -178,15 +181,16 @@ CREATE TABLE `paciente` (
   `Edo` varchar(100) DEFAULT NULL,
   `Celular` varchar(15) DEFAULT NULL,
   `RFC` varchar(13) DEFAULT NULL,
-  `FN` date DEFAULT NULL
+  `FN` date DEFAULT NULL,
+  `Condicion` tinyint(1)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `paciente`
 --
 
-INSERT INTO `paciente` (`ID_Paciente`, `ID_Usuario`, `Colonia`, `Ciudad`, `CP`, `Edo`, `Celular`, `RFC`, `FN`) VALUES
-(1, 1, 'Colonia Centro', 'Ciudad de México', '12345', 'CDMX', '555-5678', 'JUAP880101HDF', '1988-01-01');
+INSERT INTO `paciente` (`ID_Paciente`, `ID_Usuario`, `Colonia`, `Ciudad`, `CP`, `Edo`, `Celular`, `RFC`, `FN`, `Condicion`) VALUES
+(1, 1, 'Colonia Centro', 'Ciudad de México', '12345', 'CDMX', '555-5678', 'JUAP880101HDF', '1988-01-01', '1');
 
 -- --------------------------------------------------------
 
