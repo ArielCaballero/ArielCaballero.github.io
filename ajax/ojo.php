@@ -1,0 +1,94 @@
+<?php 
+require_once "../modelos/ojo.php";
+
+$ojo=new Ojo();
+
+$idojo=isset($_POST["idojo"])? limpiarCadena($_POST["idojo"]):"";
+$idpaciente=isset($_POST["idpaciente"])? limpiarCadena($_POST["idpaciente"]):"";
+$tipo=isset($_POST["tipo"])? limpiarCadena($_POST["tipo"]):"";
+$esferico=isset($_POST["esferico"])? limpiarCadena($_POST["esferico"]):"";
+$cilindrico=isset($_POST["cilindrico"])? limpiarCadena($_POST["cilindrico"]):"";
+$eje=isset($_POST["eje"])? limpiarCadena($_POST["eje"]):"";
+$prisma=isset($_POST["prisma"])? limpiarCadena($_POST["prisma"]):"";
+$altura=isset($_POST["altura"])? limpiarCadena($_POST["altura"]):"";
+$oblea=isset($_POST["oblea"])? limpiarCadena($_POST["oblea"]):"";
+$color=isset($_POST["color"])? limpiarCadena($_POST["color"]):"";
+$av=isset($_POST["av"])? limpiarCadena($_POST["av"]):"";
+$pio=isset($_POST["pio"])? limpiarCadena($_POST["pio"]):"";
+$estereopsis=isset($_POST["estereopsis"])? limpiarCadena($_POST["estereopsis"]):"";
+$avsl=isset($_POST["avsl"])? limpiarCadena($_POST["avsl"]):"";
+$avc=isset($_POST["avc"])? limpiarCadena($_POST["avc"]):"";
+$avl=isset($_POST["avl"])? limpiarCadena($_POST["avl"]):"";
+$avcc=isset($_POST["avcc"])? limpiarCadena($_POST["avcc"]):"";
+
+switch ($_GET["op"]){
+	case 'guardaryeditar':
+		if (empty($idojo)){
+			$rspta=$ojo->insertar($idpaciente, $tipo, $esferico, $cilindrico, $eje, $prisma, $altura, $oblea, $color, $av, $pio, $estereopsis, $avsl, $avc, $avl, $avcc);
+			echo $rspta ? "Ojo registrado" : "Ojo no se pudo registrar";
+		}
+		else {
+			$rspta=$ojo->editar($idojo,$idpaciente, $tipo, $esferico, $cilindrico, $eje, $prisma, $altura, $oblea, $color, $av, $pio, $estereopsis, $avsl, $avc, $avl, $avcc);
+			echo $rspta ? "Ojo actualizado" : "Ojo no se pudo actualizar";
+		}
+	break;
+
+	// case 'desactivar':
+	// 	$rspta=$ojo->desactivar($idojo);
+ 	// 	echo $rspta ? "ojo Desactivado" : "ojo no se puede desactivar";
+ 	// 	break;
+	// break;
+
+	// case 'activar':
+	// 	$rspta=$ojo->activar($idojo);
+ 	// 	echo $rspta ? "ojo activado" : "ojo no se puede activar";
+ 	// 	break;
+	// break;
+
+
+	case 'mostrar':
+		$rspta=$ojo->mostrar($idojo);
+ 		//Codificar el resultado utilizando json
+ 		echo json_encode($rspta);
+ 		break;
+	break;
+
+	case 'listar':
+		$rspta=$ojo->listar();
+ 		//Vamos a declarar un array
+ 		$data= Array();
+ 		while ($reg=$rspta->fetch_object()){
+ 			$data[]=array(
+ 				"0"=>'<button class="btn btn-warning" onclick="mostrar('.$reg->ID_Ojo.')"><i class="fa fa-pencil"></i></button>',
+ 				"1"=>$reg->Tipo,
+ 				"2"=>$reg->Esferico,
+				"3"=>$reg->Cilindrico,
+ 				"4"=>$reg->Eje,
+				"5"=>$reg->Prisma,
+ 				"6"=>$reg->Altura,
+				"7"=>$reg->Oblea,
+				"8"=>$reg->Color,
+ 				"9"=>$reg->AV,
+				"10"=>$reg->PIO,
+				"11"=>$reg->Estereopsis,
+				"12"=>$reg->Agudeza_Visual_S_L,
+				"13"=>$reg->Agudeza_Visual_C,
+				"14"=>$reg->Agudeza_Visual_L,
+				"15"=>$reg->Agudeza_Visual_C_C,
+
+
+
+
+
+ 				);
+ 		}
+ 		$results = array(
+ 			"sEcho"=>1, //Información para el datatables
+ 			"iTotalRecords"=>count($data), //enviamos el total registros al datatable
+ 			"iTotalDisplayRecords"=>count($data), //enviamos el total registros a visualizar
+ 			"aaData"=>$data);
+ 		echo json_encode($results);
+
+	break;
+}
+?>
