@@ -53,13 +53,13 @@
               <!-- User Account: style can be found in dropdown.less -->
               <li class="dropdown user user-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  <img src="../public/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+                  <img src="../public/dist/img/logo.jpg" class="user-image" alt="User Image">
                   <span class="hidden-xs">Empresa de Software</span>
                 </a>
                 <ul class="dropdown-menu">
                   <!-- User image -->
                   <li class="user-header">
-                    <img src="../public/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                    <img src="../public/dist/img/logo.jpg" class="img-circle" alt="User Image">
                     <p>
                       Desarrollando Software de Calidad                    
                     </p>
@@ -92,42 +92,29 @@
                 <i class="fa fa-tasks"></i> <span>Escritorio</span>
               </a>
             </li>            
-            <li class="treeview">
-              <a href="#">
-                <i class="fa fa-laptop"></i>
-                <span>Almacén</span>
-                <i class="fa fa-angle-left pull-right"></i>
-              </a>
-              <ul class="treeview-menu">
-                <li><a href="articulo.php"><i class="fa fa-circle-o"></i> Artículos</a></li>
-                <li><a href="factura.php"><i class="fa fa-circle-o"></i> Factura</a></li>
-              </ul>
-            </li>
             
             <li class="treeview">
               <a href="#">
-                <i class="fa fa-th"></i>
-                <span>Compras</span>
+                <i class="fa fa-user"></i>
+                <span>Datos de Pacientes</span>
                  <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
                 <li><a href="historia.php"><i class="fa fa-circle-o"></i> Historia Ocular</a></li>
                 <li><a href="exp_funcional.php"><i class="fa fa-circle-o"></i> Exploracion Funcional</a></li>
-                <li><a href="exp_fisica.php"><i class="fa fa-circle-o"></i> Exploracion Fisica</a></li>
-                <li><a href="proveedor.php"><i class="fa fa-circle-o"></i> Proveedores</a></li>
+                <li><a href="exp_fisica.php"><i class="fa fa-circle-o"></i> Exploracion Fisica</a></li>   
+                <li><a href="ojo.php"><i class="fa fa-circle-o"></i> Ojo</a></li>             
               </ul>
             </li>
             <li class="treeview">
               <a href="#">
-                <i class="fa fa-shopping-cart"></i>
-                <span>Ventas</span>
+                <i class="fa fa-sticky-note"></i>
+                <span>Recetas</span>
                  <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="receta.php"><i class="fa fa-circle-o"></i> Receta</a></li>
-                <li><a href="ojo.php"><i class="fa fa-circle-o"></i> Ojo</a></li>
-                <li><a href="lente.php"><i class="fa fa-circle-o"></i> Lentes de Contacto</a></li>
-                <li><a href="cliente.php"><i class="fa fa-circle-o"></i> Clientes</a></li>
+                <li><a href="receta.php"><i class="fa fa-circle-o"></i> Receta</a></li>                
+                <li><a href="lente.php"><i class="fa fa-circle-o"></i> Lentes de Contacto</a></li>          
               </ul>
             </li>                       
             <li class="treeview">
