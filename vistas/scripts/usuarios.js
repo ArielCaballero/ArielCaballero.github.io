@@ -114,7 +114,7 @@ function mostrar(idusuario)
 
 		$("#idusuario").val(data.ID_Usuario);
 		$("#nombre").val(data.Nombre);
-		$("#descripcion").val(data.Direccion);
+		$("#direccion").val(data.Direccion);
 		$("#tel").val(data.Tel);
 		$("#email").val(data.Email);
 		$("#tipo").val(data.Tipo);

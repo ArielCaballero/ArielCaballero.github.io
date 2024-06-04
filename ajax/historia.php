@@ -10,18 +10,18 @@ $hg=isset($_POST["hg"])? limpiarCadena($_POST["hg"]):"";
 $edad=isset($_POST["edad"])? limpiarCadena($_POST["edad"]):"";
 $sexo=isset($_POST["sexo"])? limpiarCadena($_POST["sexo"]):"";
 $ocupacion=isset($_POST["ocupacion"])? limpiarCadena($_POST["ocupacion"]):"";
-$graduacion=isset($_POST["graduacion"])? limpiarCadena($_POST["graduacion"]):"";
+$grad=isset($_POST["grad"])? limpiarCadena($_POST["grad"]):"";
 $fecha=isset($_POST["fecha"])? limpiarCadena($_POST["fecha"]):"";
 
 
 switch ($_GET["op"]){
 	case 'guardaryeditar':
 		if (empty($idhistoria)){
-			$rspta=$historia->insertar($idpaciente, $interrogatorio, $hg, $edad, $sexo, $ocupacion, $graduacion, $fecha);
+			$rspta=$historia->insertar($idpaciente, $interrogatorio, $hg, $edad, $sexo, $ocupacion, $grad, $fecha);
 			echo $rspta ? "Historia Ocular registrada" : "Historia Ocular no se pudo registrar";
 		}
 		else {
-			$rspta=$historia->editar($idhistoria,$idpaciente, $interrogatorio, $hg, $edad, $sexo, $ocupacion, $graduacion, $fecha);
+			$rspta=$historia->editar($idhistoria,$idpaciente, $interrogatorio, $hg, $edad, $sexo, $ocupacion, $grad, $fecha);
 			echo $rspta ? "Historia Ocular actualizada" : "Historia Ocular no se pudo actualizar";
 		}
 	break;
@@ -63,7 +63,7 @@ switch ($_GET["op"]){
  				"3"=>$reg->Edad,
 				"4"=>$reg->Sexo,
 				"5"=>$reg->Ocupacion,
- 				"6"=>$reg->Graduacion_Usa,
+ 				"6"=>($reg->Graduacion_Usa == 1? 'Si': 'No'),
 				"7"=>$reg->Fecha_Graduacion,
 
  				);

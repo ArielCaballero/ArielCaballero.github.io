@@ -9,8 +9,7 @@ require 'header.php';
             <div class="row">
               <div class="col-md-12">
                   <div class="box">
-                    <div class="box-header with-border">
-                          <h1 class="box-title">Tabla <button class="btn btn-success" onclick="mostrarform(true)"><i class="fa fa-plus-circle"></i> Agregar</button></h1>
+                    <div class="box-header with-border">                      
                         <div class="box-tools pull-right">
                         </div>
                     </div>

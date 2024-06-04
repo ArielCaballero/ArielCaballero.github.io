@@ -88,7 +88,7 @@
           <ul class="sidebar-menu">
             <li class="header"></li>
             <li>
-              <a href="#">
+              <a href="listado.php">
                 <i class="fa fa-tasks"></i> <span>Escritorio</span>
               </a>
             </li>            
@@ -126,11 +126,11 @@
                 <li><a href="usuarios.php"><i class="fa fa-circle-o"></i> Usuarios</a></li>
                 <li><a href="paciente.php"><i class="fa fa-circle-o"></i> Pacientes</a></li>
                 <li><a href="doctor.php"><i class="fa fa-circle-o"></i> Doctores</a></li>
-                <li><a href="permiso.php"><i class="fa fa-circle-o"></i> Permisos</a></li>
+                <!-- <li><a href="permiso.php"><i class="fa fa-circle-o"></i> Permisos</a></li> -->
                 
               </ul>
             </li>
-            <li class="treeview">
+            <!-- <li class="treeview">
               <a href="#">
                 <i class="fa fa-bar-chart"></i> <span>Consulta Compras</span>
                 <i class="fa fa-angle-left pull-right"></i>
@@ -159,7 +159,7 @@
                 <i class="fa fa-info-circle"></i> <span>Acerca De...</span>
                 <small class="label pull-right bg-yellow">IT</small>
               </a>
-            </li>
+            </li> -->
                         
           </ul>
         </section>

@@ -68,8 +68,8 @@ require 'header.php';
                             <label>Tipo:</label>  
                             <br>                
                               <select class="form-select form-control" id="tipo", name="tipo" required>            
-                                <option value="1">OD</option>
-                                <option value="2">OI</option>
+                                <option>OD</option>
+                                <option>OI</option>
                               </select>              
                           </div>  
                           <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">

@@ -21,7 +21,7 @@ function limpiar()
 	$("#edad").val("");
 	$("#sexo").val("");
 	$("#ocupacion").val("");
-	$("#graduacion").val("");
+	$("#grad").val("");
 	$("#fecha").val("");;
 
 }
@@ -120,7 +120,7 @@ function mostrar(idhistoria)
 		$("#edad").val(data.Edad);
 		$("#sexo").val(data.Sexo);
 		$("#ocupacion").val(data.Ocupacion);
-		$("#graduacion").val(data.Graduacion_USA);
+		$("#grad").val(data.Graduacion_Usa);
 		$("#fecha").val(data.Fecha_Graduacion);
 		
  	})
@@ -154,18 +154,18 @@ function mostrar(idhistoria)
 // 	})
 // }
 
-function eliminar(idhistoria)
-{
-	bootbox.confirm("¿Está Seguro de eliminar la historia?", function(result){
-		if(result)
-        {
-        	$.post("../ajax/historia.php?op=eliminar", {idhistoria : idhistoria}, function(e){
-        		bootbox.alert(e);
-	            tabla.ajax.reload();
-        	});	
-        }
-	})
-}
+// function eliminar(idhistoria)
+// {
+// 	bootbox.confirm("¿Está Seguro de eliminar la historia?", function(result){
+// 		if(result)
+//         {
+//         	$.post("../ajax/historia.php?op=eliminar", {idhistoria : idhistoria}, function(e){
+//         		bootbox.alert(e);
+// 	            tabla.ajax.reload();
+//         	});	
+//         }
+// 	})
+// }
 
 
 init();

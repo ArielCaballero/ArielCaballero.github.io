@@ -65,8 +65,8 @@ require 'header.php';
                             <label>Sexo:</label>  
                             <br>                
                               <select class="form-select form-control" id="sexo", name="sexo" required>            
-                                <option value="1">Masculino</option>
-                                <option value="2">Femenino</option>
+                                <option>Masculino</option>
+                                <option>Femenino</option>
                               </select>              
                           </div>  
                           <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
@@ -76,9 +76,9 @@ require 'header.php';
                           <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <label>Usa Graduacion:</label>  
                             <br>                
-                              <select class="form-select form-control" id="graduacion", name="graduacion" required>            
+                              <select class="form-select form-control" id="grad", name="grad">            
                                 <option value="1">Si</option>
-                                <option value="2">No</option>
+                                <option value="0">No</option>
                               </select>              
                           </div> 
                           <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">

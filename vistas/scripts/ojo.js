@@ -133,7 +133,7 @@ function mostrar(idojo)
 		$("#color").val(data.Color);
 		$("#av").val(data.AV);
 		$("#pio").val(data.PIO);
-		$("#estereopsis").val(data.ID_Estereopsis);
+		$("#estereopsis").val(data.Estereopsis);
 		$("#avsl").val(data.Agudeza_Visual_S_L);
 		$("#avc").val(data.Agudeza_Visual_C);
 		$("#avl").val(data.Agudeza_Visual_L);

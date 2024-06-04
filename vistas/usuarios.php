@@ -65,8 +65,8 @@ require 'header.php';
                             <label>Tipo de Usuario:</label>  
                             <br>                
                               <select class="form-select form-control" id="tipo", name="tipo">            
-                                <option value="1">Cliente</option>
-                                <option value="2">Doctor</option>
+                                <option>Cliente</option>
+                                <option>Doctor</option>
                               </select>              
                           </div>
                           <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">

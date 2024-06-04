@@ -62,7 +62,7 @@ require 'header.php';
                             <br>                
                               <select class="form-select form-control" id="cristal", name="cristal">            
                                 <option value="1">Si</option>
-                                <option value="2">No</option>
+                                <option value="0">No</option>
                               </select>              
                           </div>                          
                           <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
@@ -70,7 +70,7 @@ require 'header.php';
                             <br>                
                               <select class="form-select form-control" id="plastico", name="plastico">            
                                 <option value="1">Si</option>
-                                <option value="2">No</option>
+                                <option value="0">No</option>
                               </select>              
                           </div> 
                           <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
