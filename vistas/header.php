@@ -54,7 +54,7 @@
               <li class="dropdown user user-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                   <img src="../public/dist/img/logo.jpg" class="user-image" alt="User Image">
-                  <span class="hidden-xs">Empresa de Software</span>
+                  <span class="hidden-xs">ASOFT</span>
                 </a>
                 <ul class="dropdown-menu">
                   <!-- User image -->
