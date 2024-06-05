@@ -25,7 +25,10 @@ function limpiar()
 	$("#tipo").val("");
 	$("#username").val("");
 	$("#password").val("");
+	$("#oldpassword").val("");
 	$("#condicion").val("");
+	$("#fechamod").val("");
+	$("#idmod").val("");
 }
 
 //Función mostrar formulario
@@ -122,8 +125,10 @@ function mostrar(idusuario)
 		$("#email").val(data.Email);
 		$("#tipo").val(data.Tipo);
 		$("#usuario").val(data.Username);
-		$("#password").val(data.Password);
 		$("#condicion").val(data.Condicion);
+		$("#fechamod").val(data.Fecha_Modificacion);
+		$("#idmod").val(data.ID_Modificacion);
+		$("#oldpassword").val(data.Password);
 
 
  	});

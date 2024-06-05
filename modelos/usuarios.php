@@ -11,10 +11,10 @@ Class Usuario
 	}
 
 	//Implementamos un método para insertar registros
-	public function insertar($nombre,$direccion,$tel,$email,$tipo,$username, $password, $permisos)
+	public function insertar($nombre,$direccion,$tel,$email,$tipo,$username, $password, $permisos, $idmodificacion)
 	{
-		$sql="INSERT INTO usuario (Nombre, Direccion, Tel, Email, Tipo, Username, Password)
-		VALUES ('$nombre','$direccion','$tel','$email','$tipo','$username','$password')";
+		$sql="INSERT INTO usuario (Nombre, Direccion, Tel, Email, Tipo, Username, Password, ID_Modificacion)
+		VALUES ('$nombre','$direccion','$tel','$email','$tipo','$username','$password', $idmodificacion";
 		$idusuarionew=ejecutarConsulta_retornarID($sql);
 
 		$num_elementos=0;
@@ -31,9 +31,10 @@ Class Usuario
 	}
 
 	//Implementamos un método para editar registros
-	public function editar($idusuario,$nombre,$direccion,$tel,$email,$tipo,$username,$password, $permisos)
+	public function editar($idusuario,$nombre,$direccion,$tel,$email,$tipo,$username,$password, $permisos, $idmodificacion)
 	{
-		$sql="UPDATE usuario SET Nombre='$nombre', Direccion='$direccion', Tel='$tel',Email='$email',  Tipo='$tipo', Username='$username', Password='$password' WHERE ID_Usuario='$idusuario'";
+		$fechamodificacion = date('Y-m-d');
+		$sql="UPDATE usuario SET Nombre='$nombre', Direccion='$direccion', Tel='$tel',Email='$email',  Tipo='$tipo', Username='$username', Password='$password', Fecha_Modificacion ='$fechamodificacion', ID_Modificacion='$idmodificacion' WHERE ID_Usuario='$idusuario'";
 		ejecutarConsulta($sql);
 
 		$sqldel="DELETE FROM usuario_permiso WHERE idusuario='$idusuario'";
@@ -80,6 +81,13 @@ Class Usuario
 	public function mostrar($idusuario)
 	{
 		$sql="SELECT * FROM usuario WHERE ID_Usuario='$idusuario'";
+		return ejecutarConsultaSimpleFila($sql);
+	}
+
+	//Implementar un método para mostrar los datos de un registro a modificar
+	public function getnombre($idusuario)
+	{
+		$sql="SELECT Nombre FROM usuario WHERE ID_Usuario='$idusuario'";
 		return ejecutarConsultaSimpleFila($sql);
 	}
 

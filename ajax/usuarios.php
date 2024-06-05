@@ -15,18 +15,25 @@ $email=isset($_POST["email"])? limpiarCadena($_POST["email"]):"";
 $tipo=isset($_POST["tipo"])? limpiarCadena($_POST["tipo"]):"";
 $username=isset($_POST["usuario"])? limpiarCadena($_POST["usuario"]):"";
 $password=isset($_POST["password"])? limpiarCadena($_POST["password"]):"";
+$oldpassword=isset($_POST["oldpassword"])? limpiarCadena($_POST["oldpassword"]):"";
 
 switch ($_GET["op"]){
 	case 'guardaryeditar':
 		//Hash SHA256 en la contraseña
-		$clavehash=hash("SHA256",$password);
+		if (empty($password)){
+			$clavehash=$oldpassword;
+		}
+		else{
+			$clavehash=hash("SHA256",$password);
+		}
+		
 
 		if (empty($idusuario)){
-			$rspta=$usuario->insertar($nombre,$direccion,$tel,$email,$tipo,$username, $clavehash,$_POST['permiso']);
+			$rspta=$usuario->insertar($nombre,$direccion,$tel,$email,$tipo,$username, $clavehash,$_POST['permiso'], $_SESSION['idusuario']);
 			echo $rspta ? "Usuario registrado" : "Usuario no se pudo registrar";
 		}
 		else {
-			$rspta=$usuario->editar($idusuario,$nombre,$direccion,$tel,$email,$tipo,$username, $clavehash,$_POST['permiso']);
+			$rspta=$usuario->editar($idusuario,$nombre,$direccion,$tel,$email,$tipo,$username, $clavehash,$_POST['permiso'], $_SESSION['idusuario']);
 			echo $rspta ? "Usuario actualizado" : "Usuario no se pudo actualizar";
 		}
 	break;
@@ -71,7 +78,8 @@ switch ($_GET["op"]){
  				"4"=>$reg->Email,
 				"5"=>$reg->Tipo,
  				"6"=>$reg->Username,
-				"7"=>$reg->Password,
+				"7"=>$reg->Fecha_Modificacion,
+				"8"=>($usuario->getnombre($reg->ID_Modificacion))['Nombre'],
  				);
  		}
  		$results = array(

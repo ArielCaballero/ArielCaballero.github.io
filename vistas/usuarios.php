@@ -37,7 +37,9 @@ if ($_SESSION['acceso']==1)
                             <th>Telefono</th>
                             <th>E-mail</th>
                             <th>Tipo</th>
-                            <th>Nombre de Usuario</th>                           
+                            <th>Nombre de Usuario</th>
+                            <th>Fecha Modificacion</th>
+                            <th>Modificado por</th>                              
                           </thead>
                           <tbody>                            
                           </tbody>
@@ -48,7 +50,9 @@ if ($_SESSION['acceso']==1)
                             <th>Telefono</th>
                             <th>E-mail</th>
                             <th>Tipo</th>
-                            <th>Nombre de Usuario</th>                                    
+                            <th>Nombre de Usuario</th>
+                            <th>Fecha Modificacion</th>
+                            <th>Modificado por</th>                                 
                           </tfoot>
                         </table>
                     </div>
@@ -86,12 +90,21 @@ if ($_SESSION['acceso']==1)
                           <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <label>Constraseña:</label>
                             <input type="password" class="form-control" name="password" id="password" maxlength="256" placeholder="Constraseña">
+                            <input type="hidden" name="oldpassword" id="oldpassword">
                           </div>
                           <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <label>Permisos:</label>
                             <ul style="list-style: none;" id="permisos">
                               
                             </ul>
+                          </div>
+                          <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">     
+                          <label>Fecha de Modificacion:</label>                       
+                            <input type="text" class="form-control" name="fechamod" id="fechamod" maxlength="256" disabled>
+                          </div>
+                          <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                          <label>Usuario que Modifico:</label>
+                            <input type="text" class="form-control" name="idmod" id="idmod" maxlength="256" disabled>
                           </div>
                           <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <button class="btn btn-primary" type="submit" id="btnGuardar"><i class="fa fa-save"></i> Guardar</button>
