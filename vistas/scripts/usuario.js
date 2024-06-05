@@ -9,23 +9,28 @@ function init(){
 	{
 		guardaryeditar(e);	
 	})
-	$.post("../ajax/usuarios.php?op=permisos&id=",function(r){
-		$("#permisos").html(r);
-	})
+
+	$("#imagenmuestra").hide();
+	//Mostramos los permisos
+	$.post("../ajax/usuario.php?op=permisos&id=",function(r){
+	        $("#permisos").html(r);
+	});
 }
 
 //Función limpiar
 function limpiar()
 {
-	$("#idusuario").val("");
 	$("#nombre").val("");
+	$("#num_documento").val("");
 	$("#direccion").val("");
-	$("#tel").val("");
+	$("#telefono").val("");
 	$("#email").val("");
-	$("#tipo").val("");
-	$("#username").val("");
-	$("#password").val("");
-	$("#condicion").val("");
+	$("#cargo").val("");
+	$("#login").val("");
+	$("#clave").val("");
+	$("#imagenmuestra").attr("src","");
+	$("#imagenactual").val("");
+	$("#idusuario").val("");
 }
 
 //Función mostrar formulario
@@ -70,7 +75,7 @@ function listar()
 		        ],
 		"ajax":
 				{
-					url: '../ajax/usuarios.php?op=listar',
+					url: '../ajax/usuario.php?op=listar',
 					type : "get",
 					dataType : "json",						
 					error: function(e){
@@ -91,7 +96,7 @@ function guardaryeditar(e)
 	var formData = new FormData($("#formulario")[0]);
 
 	$.ajax({
-		url: "../ajax/usuarios.php?op=guardaryeditar",
+		url: "../ajax/usuario.php?op=guardaryeditar",
 	    type: "POST",
 	    data: formData,
 	    contentType: false,
@@ -99,9 +104,9 @@ function guardaryeditar(e)
 
 	    success: function(datos)
 	    {                    
-	            bootbox.alert(datos);	          
-	            mostrarform(false);
-	            tabla.ajax.reload();
+	          bootbox.alert(datos);	          
+	          mostrarform(false);
+	          tabla.ajax.reload();
 	    }
 
 	});
@@ -110,62 +115,39 @@ function guardaryeditar(e)
 
 function mostrar(idusuario)
 {
-	$.post("../ajax/usuarios.php?op=mostrar",{idusuario : idusuario}, function(data, status)
+	$.post("../ajax/usuario.php?op=mostrar",{idusuario : idusuario}, function(data, status)
 	{
 		data = JSON.parse(data);		
 		mostrarform(true);
 
-		$("#idusuario").val(data.ID_Usuario);
-		$("#nombre").val(data.Nombre);
-		$("#direccion").val(data.Direccion);
-		$("#tel").val(data.Tel);
-		$("#email").val(data.Email);
-		$("#tipo").val(data.Tipo);
-		$("#usuario").val(data.Username);
-		$("#password").val(data.Password);
-		$("#condicion").val(data.Condicion);
-
+		$("#nombre").val(data.nombre);
+		$("#tipo_documento").val(data.tipo_documento);
+		$("#tipo_documento").selectpicker('refresh');
+		$("#num_documento").val(data.num_documento);
+		$("#direccion").val(data.direccion);
+		$("#telefono").val(data.telefono);
+		$("#email").val(data.email);
+		$("#cargo").val(data.cargo);
+		$("#login").val(data.login);
+		$("#clave").val(data.clave);
+		$("#imagenmuestra").show();
+		$("#imagenmuestra").attr("src","../files/usuarios/"+data.imagen);
+		$("#imagenactual").val(data.imagen);
+		$("#idusuario").val(data.idusuario);
 
  	});
-	 $.post("../ajax/usuarios.php?op=permisos&id="+idusuario,function(r){
-		$("#permisos").html(r);
-});
+ 	$.post("../ajax/usuario.php?op=permisos&id="+idusuario,function(r){
+	        $("#permisos").html(r);
+	});
 }
 
 //Función para desactivar registros
-// function desactivar(idusuario)
-// {
-// 	bootbox.confirm("¿Está Seguro de desactivar el Usuario?", function(result){
-// 		if(result)
-//         {
-//         	$.post("../ajax/usuario.php?op=desactivar", {idusuario : idusuario}, function(e){
-//         		bootbox.alert(e);
-// 	            tabla.ajax.reload();
-//         	});	
-//         }
-// 	})
-// }
-
-// //Función para activar registros
-// function activar(idusuario)
-// {
-// 	bootbox.confirm("¿Está Seguro de activar el Usuario?", function(result){
-// 		if(result)
-//         {
-//         	$.post("../ajax/usuarios.php?op=activar", {idusuario : idusuario}, function(e){
-//         		bootbox.alert(e);
-// 	            tabla.ajax.reload();
-//         	});	
-//         }
-// 	})
-// }
-
-function eliminar(idusuario)
+function desactivar(idusuario)
 {
-	bootbox.confirm("¿Está Seguro de eliminar el Usuario?", function(result){
+	bootbox.confirm("¿Está Seguro de desactivar el usuario?", function(result){
 		if(result)
         {
-        	$.post("../ajax/usuarios.php?op=eliminar", {idusuario : idusuario}, function(e){
+        	$.post("../ajax/usuario.php?op=desactivar", {idusuario : idusuario}, function(e){
         		bootbox.alert(e);
 	            tabla.ajax.reload();
         	});	
@@ -173,5 +155,18 @@ function eliminar(idusuario)
 	})
 }
 
+//Función para activar registros
+function activar(idusuario)
+{
+	bootbox.confirm("¿Está Seguro de activar el Usuario?", function(result){
+		if(result)
+        {
+        	$.post("../ajax/usuario.php?op=activar", {idusuario : idusuario}, function(e){
+        		bootbox.alert(e);
+	            tabla.ajax.reload();
+        	});	
+        }
+	})
+}
 
 init();

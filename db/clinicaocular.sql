@@ -236,9 +236,56 @@ INSERT INTO `usuario` (`ID_Usuario`, `Nombre`, `Direccion`, `Tel`, `Email`, `Tip
 (1, 'Juan Perez', 'Calle Falsa 123', '555-1234', 'juan.perez@example.com', 'Cliente', 'juanp', 'password123'),
 (2, 'Dr. Ana Lopez', 'Avenida Principal 456', '555-8765', 'ana.lopez@example.com', 'Doctor', 'analopez', 'securepass456');
 
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `permiso`
+--
+
+CREATE TABLE `permiso` (
+  `idpermiso` int(11) NOT NULL,
+  `nombre` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+--
+-- Volcado de datos para la tabla `permiso`
+--
+
+INSERT INTO `permiso` (`idpermiso`, `nombre`) VALUES
+(1, 'datospaciente'),
+(2, 'recetas'),
+(3, 'acceso');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `usuario_permiso`
+--
+
+CREATE TABLE `usuario_permiso` (
+  `idusuario_permiso` int(11) NOT NULL,
+  `idusuario` int(11) NOT NULL,
+  `idpermiso` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
 --
 -- Índices para tablas volcadas
 --
+
+--
+-- Indices de la tabla `usuario_permiso`
+--
+ALTER TABLE `usuario_permiso`
+  ADD PRIMARY KEY (`idusuario_permiso`),
+  ADD KEY `fk_usuario_permiso_permiso_idx` (`idpermiso`),
+  ADD KEY `fk_usuario_permiso_usuario_idx` (`idusuario`);
+
+--
+-- Indices de la tabla `permiso`
+--
+ALTER TABLE `permiso`
+  ADD PRIMARY KEY (`idpermiso`);
 
 --
 -- Indices de la tabla `doctor`
@@ -376,6 +423,17 @@ ALTER TABLE `receta`
 ALTER TABLE `usuario`
   MODIFY `ID_Usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
+  --
+-- AUTO_INCREMENT de la tabla `permiso`
+--
+ALTER TABLE `permiso`
+  MODIFY `idpermiso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+  -- AUTO_INCREMENT de la tabla `usuario_permiso`
+--
+ALTER TABLE `usuario_permiso`
+  MODIFY `idusuario_permiso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=103;
+
 --
 -- Restricciones para tablas volcadas
 --
@@ -403,6 +461,13 @@ ALTER TABLE `exploracion_funcional`
 --
 ALTER TABLE `factura`
   ADD CONSTRAINT `factura_ibfk_1` FOREIGN KEY (`ID_Paciente`) REFERENCES `paciente` (`ID_Paciente`);
+
+--
+-- Filtros para la tabla `usuario_permiso`
+--
+ALTER TABLE `usuario_permiso`
+  ADD CONSTRAINT `fk_usuario_permiso_permiso` FOREIGN KEY (`idpermiso`) REFERENCES `permiso` (`idpermiso`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_usuario_permiso_usuario` FOREIGN KEY (`idusuario`) REFERENCES `usuario` (`idusuario`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Filtros para la tabla `historia_ocular`

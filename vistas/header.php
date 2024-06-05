@@ -1,3 +1,8 @@
+<?php
+if (strlen(session_id()) < 1) 
+  session_start();
+?>
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -27,6 +32,9 @@
 
   </head>
   <body class="hold-transition skin-blue-light sidebar-mini">
+    <?php
+    echo $_SESSION["nombre"];
+    ?>
     <div class="wrapper">
 
       <header class="main-header">
@@ -47,11 +55,14 @@
           </a>
           <!-- Navbar Right Menu -->
           <div class="navbar-custom-menu">
+          <span class="hidden-xs"><?php echo $_SESSION['nombre']; ?></span>
             <ul class="nav navbar-nav">
               <!-- Messages: style can be found in dropdown.less-->
               
               <!-- User Account: style can be found in dropdown.less -->
               <li class="dropdown user user-menu">
+              
+                
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                   <img src="../public/dist/img/logo.jpg" class="user-image" alt="User Image">
                   <span class="hidden-xs">ASOFT</span>
@@ -69,7 +80,7 @@
                   <li class="user-footer">
                     
                     <div class="pull-right">
-                      <a href="#" class="btn btn-default btn-flat">Cerrar</a>
+                      <a href="../ajax/usuarios.php?op=salir" class="btn btn-default btn-flat">Cerrar</a>
                     </div>
                   </li>
                 </ul>
@@ -92,32 +103,46 @@
                 <i class="fa fa-tasks"></i> <span>Escritorio</span>
               </a>
             </li>            
-            
-            <li class="treeview">
-              <a href="#">
-                <i class="fa fa-user"></i>
-                <span>Datos de Pacientes</span>
-                 <i class="fa fa-angle-left pull-right"></i>
-              </a>
-              <ul class="treeview-menu">
-                <li><a href="historia.php"><i class="fa fa-circle-o"></i> Historia Ocular</a></li>
-                <li><a href="exp_funcional.php"><i class="fa fa-circle-o"></i> Exploracion Funcional</a></li>
-                <li><a href="exp_fisica.php"><i class="fa fa-circle-o"></i> Exploracion Fisica</a></li>   
-                <li><a href="ojo.php"><i class="fa fa-circle-o"></i> Ojo</a></li>             
-              </ul>
-            </li>
-            <li class="treeview">
+            <?php
+              if ($_SESSION['datospaciente']==1){
+                echo
+                '<li class="treeview">
+                  <a href="#">
+                    <i class="fa fa-user"></i>
+                    <span>Datos de Pacientes</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                  </a>
+                  <ul class="treeview-menu">
+                    <li><a href="historia.php"><i class="fa fa-circle-o"></i> Historia Ocular</a></li>
+                    <li><a href="exp_funcional.php"><i class="fa fa-circle-o"></i> Exploracion Funcional</a></li>
+                    <li><a href="exp_fisica.php"><i class="fa fa-circle-o"></i> Exploracion Fisica</a></li>   
+                    <li><a href="ojo.php"><i class="fa fa-circle-o"></i> Ojo</a></li>             
+                  </ul>
+                </li>';
+              }
+            ?>
+
+          <?php
+              if ($_SESSION['recetas']==1){
+                echo
+            '<li class="treeview">
               <a href="#">
                 <i class="fa fa-sticky-note"></i>
                 <span>Recetas</span>
-                 <i class="fa fa-angle-left pull-right"></i>
+                <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
                 <li><a href="receta.php"><i class="fa fa-circle-o"></i> Receta</a></li>                
                 <li><a href="lente.php"><i class="fa fa-circle-o"></i> Lentes de Contacto</a></li>          
               </ul>
-            </li>                       
-            <li class="treeview">
+            </li>';
+          }
+            ?>  
+            
+            <?php
+              if ($_SESSION['acceso']==1){
+                echo
+            '<li class="treeview">
               <a href="#">
                 <i class="fa fa-folder"></i> <span>Acceso</span>
                 <i class="fa fa-angle-left pull-right"></i>
@@ -129,7 +154,9 @@
                 <!-- <li><a href="permiso.php"><i class="fa fa-circle-o"></i> Permisos</a></li> -->
                 
               </ul>
-            </li>
+            </li>';
+              }
+            ?>
             <!-- <li class="treeview">
               <a href="#">
                 <i class="fa fa-bar-chart"></i> <span>Consulta Compras</span>

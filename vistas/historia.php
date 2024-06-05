@@ -76,7 +76,7 @@ require 'header.php';
                           <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <label>Usa Graduacion:</label>  
                             <br>                
-                              <select class="form-select form-control" id="grad", name="grad">            
+                              <select class="form-select form-control" id="grad", name="grad" required>            
                                 <option value="1">Si</option>
                                 <option value="0">No</option>
                               </select>              
