@@ -13,8 +13,9 @@ Class Usuario
 	//Implementamos un método para insertar registros
 	public function insertar($nombre,$direccion,$tel,$email,$tipo,$username, $password, $permisos, $idmodificacion)
 	{
+	
 		$sql="INSERT INTO usuario (Nombre, Direccion, Tel, Email, Tipo, Username, Password, ID_Modificacion)
-		VALUES ('$nombre','$direccion','$tel','$email','$tipo','$username','$password', $idmodificacion";
+		VALUES ('$nombre','$direccion','$tel','$email','$tipo','$username','$password', '$idmodificacion')";
 		$idusuarionew=ejecutarConsulta_retornarID($sql);
 
 		$num_elementos=0;

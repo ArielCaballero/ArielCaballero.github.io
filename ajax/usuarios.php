@@ -26,14 +26,19 @@ switch ($_GET["op"]){
 		else{
 			$clavehash=hash("SHA256",$password);
 		}
-		
+		if ($tipo =='Cliente'){
+			$permiso = array(1,2);
+		}
+		if ($tipo =='Doctor'){
+			$permiso = array(1,2,3);
+		}
 
-		if (empty($idusuario)){
-			$rspta=$usuario->insertar($nombre,$direccion,$tel,$email,$tipo,$username, $clavehash,$_POST['permiso'], $_SESSION['idusuario']);
+		if (empty($idusuario)){		
+			$rspta=$usuario->insertar($nombre,$direccion,$tel,$email,$tipo,$username, $clavehash, $permiso, $_SESSION['idusuario']);
 			echo $rspta ? "Usuario registrado" : "Usuario no se pudo registrar";
 		}
 		else {
-			$rspta=$usuario->editar($idusuario,$nombre,$direccion,$tel,$email,$tipo,$username, $clavehash,$_POST['permiso'], $_SESSION['idusuario']);
+			$rspta=$usuario->editar($idusuario,$nombre,$direccion,$tel,$email,$tipo,$username, $clavehash,$permiso, $_SESSION['idusuario']);
 			echo $rspta ? "Usuario actualizado" : "Usuario no se pudo actualizar";
 		}
 	break;
@@ -113,7 +118,7 @@ switch ($_GET["op"]){
 		while ($reg = $rspta->fetch_object())
 				{
 					$sw=in_array($reg->idpermiso,$valores)?'checked':'';
-					echo '<li> <input type="checkbox" '.$sw.'  name="permiso[]" value="'.$reg->idpermiso.'">'.$reg->nombre.'</li>';
+					echo '<li> <input type="checkbox" '.$sw.'  name="permiso[]" value="'.$reg->idpermiso.'" disabled>'.$reg->nombre.'</li>';
 				}
 	break;
 

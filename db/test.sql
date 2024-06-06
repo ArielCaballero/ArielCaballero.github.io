@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 05-06-2024 a las 09:09:08
+-- Tiempo de generación: 06-06-2024 a las 01:37:31
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -294,16 +294,18 @@ CREATE TABLE `usuario` (
   `Email` varchar(100) DEFAULT NULL,
   `Tipo` enum('Cliente','Doctor') NOT NULL,
   `Username` varchar(50) NOT NULL,
-  `Password` varchar(255) NOT NULL
+  `Password` varchar(255) NOT NULL,
+  `Fecha_Modificacion` date NOT NULL DEFAULT current_timestamp(),
+  `ID_Modificacion` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `usuario`
 --
 
-INSERT INTO `usuario` (`ID_Usuario`, `Nombre`, `Direccion`, `Tel`, `Email`, `Tipo`, `Username`, `Password`) VALUES
-(1, 'Juan Perez', 'Calle Falsa 123', '555-1234', 'juan.perez@example.com', 'Cliente', 'juanp', 'ef92b778bafe771e89245b89ecbc08a44a4e166c06659911881f383d4473e94f'),
-(2, 'Dr. Ana Lopez', 'Avenida Principal 456', '555-8765', 'ana.lopez@example.com', 'Doctor', 'analopez', 'ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f');
+INSERT INTO `usuario` (`ID_Usuario`, `Nombre`, `Direccion`, `Tel`, `Email`, `Tipo`, `Username`, `Password`, `Fecha_Modificacion`, `ID_Modificacion`) VALUES
+(1, 'Juan Perez', 'Calle Falsa 123', '555-1234', 'juan.perez@example.com', 'Cliente', 'juanp', 'ef92b778bafe771e89245b89ecbc08a44a4e166c06659911881f383d4473e94f', '2024-06-05', 1),
+(2, 'Dr. Ana Lopez', 'Avenida Principal 456', '555-8765', 'ana.lopez@example.com', 'Doctor', 'analopez', 'ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f', '2024-06-05', 1);
 
 -- --------------------------------------------------------
 
@@ -408,7 +410,8 @@ ALTER TABLE `receta`
 ALTER TABLE `usuario`
   ADD PRIMARY KEY (`ID_Usuario`),
   ADD UNIQUE KEY `Username` (`Username`),
-  ADD UNIQUE KEY `Email` (`Email`);
+  ADD UNIQUE KEY `Email` (`Email`),
+  ADD KEY `usuario_ibfk_1` (`ID_Modificacion`);
 
 --
 -- Indices de la tabla `usuario_permiso`
@@ -552,6 +555,12 @@ ALTER TABLE `paciente`
 ALTER TABLE `receta`
   ADD CONSTRAINT `receta_ibfk_1` FOREIGN KEY (`ID_Paciente`) REFERENCES `paciente` (`ID_Paciente`),
   ADD CONSTRAINT `receta_ibfk_2` FOREIGN KEY (`ID_Doctor`) REFERENCES `doctor` (`ID_Doctor`);
+
+--
+-- Filtros para la tabla `usuario`
+--
+ALTER TABLE `usuario`
+  ADD CONSTRAINT `usuario_ibfk_1` FOREIGN KEY (`ID_Modificacion`) REFERENCES `usuario` (`ID_Usuario`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
