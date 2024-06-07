@@ -10,7 +10,7 @@ if (!isset($_SESSION["nombre"]))
 else
 {
 require 'header.php';
-if ($_SESSION['datospacientes']==1)
+if ($_SESSION['datospaciente']==1)
 {
 ?>
 <!--Contenido-->
