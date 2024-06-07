@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 07-06-2024 a las 08:29:03
+-- Tiempo de generación: 07-06-2024 a las 19:45:03
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -20,6 +20,31 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `test`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `citas`
+--
+
+CREATE TABLE `citas` (
+  `ID_Cita` int(11) NOT NULL,
+  `ID_Usuario` int(11) NOT NULL,
+  `ID_Doctor` int(11) NOT NULL,
+  `Fecha` date NOT NULL DEFAULT current_timestamp(),
+  `Hora` time NOT NULL,
+  `Condicion` enum('Pendiente','Confirmado','Cancelado','') NOT NULL,
+  `Fecha_Confirmacion` date DEFAULT NULL,
+  `ID_Confirmacion` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `citas`
+--
+
+INSERT INTO `citas` (`ID_Cita`, `ID_Usuario`, `ID_Doctor`, `Fecha`, `Hora`, `Condicion`, `Fecha_Confirmacion`, `ID_Confirmacion`) VALUES
+(7, 11, 1, '2125-12-05', '12:51:00', 'Confirmado', '2024-06-07', 11),
+(9, 1, 1, '1225-02-15', '02:14:00', 'Pendiente', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -267,7 +292,9 @@ INSERT INTO `permiso` (`idpermiso`, `nombre`) VALUES
 (1, 'datospaciente'),
 (2, 'recetas'),
 (3, 'acceso'),
-(4, 'misdatos');
+(4, 'misdatos'),
+(5, 'agendarcita'),
+(6, 'confirmarcita');
 
 -- --------------------------------------------------------
 
@@ -322,7 +349,7 @@ CREATE TABLE `usuario` (
 
 INSERT INTO `usuario` (`ID_Usuario`, `Nombre`, `Direccion`, `Tel`, `Email`, `Tipo`, `Username`, `Password`, `Fecha_Modificacion`, `ID_Modificacion`) VALUES
 (1, 'Juan Perez', 'Calle Falsa 123', '555-1234', 'juan.perez@example.com', 'Cliente', 'juanp', 'ef92b778bafe771e89245b89ecbc08a44a4e166c06659911881f383d4473e94f', '2024-06-07', 11),
-(2, 'Dr. Ana Lopez', 'Avenida Principal 456', '555-8765', 'ana.lopez@example.com', 'Doctor', 'analopez', '9878d344400c00f8bab1a4ba1a3488b3ace88aea983e3d94ba1c781e09ba32bb', '2024-06-07', 2),
+(2, 'Dr. Ana Lopez', 'Avenida Principal 456', '555-8765', 'analopez@example.com', 'Doctor', 'analopez', '9878d344400c00f8bab1a4ba1a3488b3ace88aea983e3d94ba1c781e09ba32bb', '2024-06-07', 2),
 (11, 'admin', 'admin', 'admin', 'admin', 'Admin', 'admin', '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918', '2024-06-07', 11);
 
 -- --------------------------------------------------------
@@ -342,18 +369,30 @@ CREATE TABLE `usuario_permiso` (
 --
 
 INSERT INTO `usuario_permiso` (`idusuario_permiso`, `idusuario`, `idpermiso`) VALUES
-(140, 1, 2),
-(141, 1, 4),
-(144, 11, 1),
-(145, 11, 2),
-(146, 11, 3),
-(147, 11, 4),
-(156, 2, 1),
-(157, 2, 2);
+(170, 11, 1),
+(171, 11, 2),
+(172, 11, 3),
+(173, 11, 5),
+(174, 11, 6),
+(178, 1, 2),
+(179, 1, 4),
+(180, 1, 5),
+(190, 2, 1),
+(191, 2, 2),
+(192, 2, 6);
 
 --
 -- Índices para tablas volcadas
 --
+
+--
+-- Indices de la tabla `citas`
+--
+ALTER TABLE `citas`
+  ADD PRIMARY KEY (`ID_Cita`),
+  ADD KEY `citas_ibfk_1` (`ID_Usuario`),
+  ADD KEY `citas_ibfk_2` (`ID_Doctor`),
+  ADD KEY `citas_ibfk_3` (`ID_Confirmacion`);
 
 --
 -- Indices de la tabla `doctor`
@@ -447,6 +486,12 @@ ALTER TABLE `usuario_permiso`
 --
 
 --
+-- AUTO_INCREMENT de la tabla `citas`
+--
+ALTER TABLE `citas`
+  MODIFY `ID_Cita` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
 -- AUTO_INCREMENT de la tabla `doctor`
 --
 ALTER TABLE `doctor`
@@ -516,11 +561,19 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `usuario_permiso`
 --
 ALTER TABLE `usuario_permiso`
-  MODIFY `idusuario_permiso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=158;
+  MODIFY `idusuario_permiso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=193;
 
 --
 -- Restricciones para tablas volcadas
 --
+
+--
+-- Filtros para la tabla `citas`
+--
+ALTER TABLE `citas`
+  ADD CONSTRAINT `citas_ibfk_1` FOREIGN KEY (`ID_Usuario`) REFERENCES `usuario` (`ID_Usuario`),
+  ADD CONSTRAINT `citas_ibfk_2` FOREIGN KEY (`ID_Doctor`) REFERENCES `doctor` (`ID_Doctor`),
+  ADD CONSTRAINT `citas_ibfk_3` FOREIGN KEY (`ID_Confirmacion`) REFERENCES `usuario` (`ID_Usuario`);
 
 --
 -- Filtros para la tabla `doctor`
