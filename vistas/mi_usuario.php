@@ -49,7 +49,7 @@ require 'header.php';
                           <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <label>Tipo de Usuario:</label>  
                             <br>                
-                              <select class="form-select form-control" id="tipo", name="tipo">            
+                              <select class="form-select form-control" id="tipo", name="tipo" disabled>            
                                 <option>Cliente</option>
                                 <option>Doctor</option>
                                 <option>Admin</option>
