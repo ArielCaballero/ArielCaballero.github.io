@@ -32,15 +32,12 @@ if (strlen(session_id()) < 1)
 
   </head>
   <body class="hold-transition skin-blue-light sidebar-mini">
-    <?php
-    echo $_SESSION["nombre"];
-    ?>
     <div class="wrapper">
 
       <header class="main-header">
 
         <!-- Logo -->
-        <a href="index2.html" class="logo">
+        <a href="index.html" class="logo">
           <!-- mini logo for sidebar mini 50x50 pixels -->
           <span class="logo-mini">Optica</span>
           <!-- logo for regular state and mobile devices -->
@@ -55,33 +52,23 @@ if (strlen(session_id()) < 1)
           </a>
           <!-- Navbar Right Menu -->
           <div class="navbar-custom-menu">
-          <span class="hidden-xs"><?php echo $_SESSION['nombre']; ?></span>
+          <span class="hidden-xs"></span>
             <ul class="nav navbar-nav">
               <!-- Messages: style can be found in dropdown.less-->
               
               <!-- User Account: style can be found in dropdown.less -->
-              <li class="dropdown user user-menu">
+               <li class="dropdown user user-menu">
+               <a href="#" class="dropdown-toggle">
+              <img src="../public/dist/img/logo.jpg" class="user-image" alt="User Image">
+              <span class="hidden-xs">ASOFT</span>
+              </a>
               
+               </li>
+              <li class="dropdown user user-menu">
                 
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  <img src="../public/dist/img/logo.jpg" class="user-image" alt="User Image">
-                  <span class="hidden-xs">ASOFT</span>
+                <a href="#" class="dropdown-toggle">
+                  <span class="hidden-xs"><?php echo $_SESSION['nombre']; ?></span>
                 </a>
-                <ul class="dropdown-menu">
-                  <!-- User image -->
-                  <li class="user-header">
-                    <img src="../public/dist/img/logo.jpg" class="img-circle" alt="User Image">
-                    <p>
-                      Desarrollando Software de Calidad                    
-                    </p>
-                  </li>
-                  
-                  <!-- Menu Footer-->
-                  <li class="user-footer">
-                    
-                    <div class="pull-right">
-                      <a href="../ajax/usuarios.php?op=salir" class="btn btn-default btn-flat">Cerrar</a>
-                    </div>
                   </li>
                 </ul>
               </li>
@@ -190,12 +177,18 @@ if (strlen(session_id()) < 1)
             </li>';
               }
             ?>
-            '<li class="treeview">
+            <li class="treeview">
                   <a href="mi_usuario.php">
                     <i class="fa fa-user"></i>
                     <span>Mi Usuario</span>
                   </a>
-                </li>'
+                </li>
+                
+                <li class="treeview">
+                <a href="../ajax/usuarios.php?op=salir">
+                    <span class='btn btn-danger'>Cerrar Sesion</span>
+                  </a>
+                </li>
             <!-- <li class="treeview">
               <a href="#">
                 <i class="fa fa-bar-chart"></i> <span>Consulta Compras</span>

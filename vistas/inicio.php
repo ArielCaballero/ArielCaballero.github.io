@@ -16,23 +16,29 @@ if (!isset($_SESSION["nombre"])) {
         <div class="row">
             <div class="col-md-12">
                 <div class="box">
-                    <div class="box-header with-border">
+                    <div class="box-header with-border container">
                         <h1>Sistema de Óptica</h1>
                         <div class="box-tools pull-right">
                         </div>
                     </div>
                     <!-- /.box-header -->
                     <!-- centro -->
-                    <div class="panel-body table-responsive" id="listadoregistros">
+                     <div class="panel-body">
                         <div class="container">
-                        <?php if ($_SESSION['datospaciente']==1){echo '<a href="datos_paciente.php" class="button">Datos de Paciente</a>';}?>
-                        <?php if ($_SESSION['recetas']==1){echo '<a href="receta.php" class="button">Recetas</a>';}?>
-                        <?php if ($_SESSION['acceso']==1){echo '<a href="usuarios.php" class="button">Acceso</a>';}?>
-                            
-                            
+                        <?php if ($_SESSION['datospaciente']==1){echo '<a href="datos_paciente.php" class="button">Datos de Paciente</a>';}?>                          
                         </div>
-                    </div>
-                    <div class="panel-body" style="height: 400px;" id="formularioregistros">
+                        <div class="container">
+                        <?php if ($_SESSION['agendarcita']==1){echo '<a href="agendarcita.php" class="button">Agendar Citas</a>';}?>
+                        </div>
+                        <div class="container">
+                        <?php if ($_SESSION['confirmarcita']==1){echo '<a href="confirmarcita.php" class="button">Revisar Citas</a>';}?>  
+                        </div>
+                        <div class="container">
+                        <?php if ($_SESSION['recetas']==1){echo '<a href="receta.php" class="button">Recetas</a>';}?>
+                        </div>
+                        <div class="container">
+                        <?php if ($_SESSION['acceso']==1){echo '<a href="usuarios.php" class="button">Usuarios</a>';}?>
+                        </div>
                     </div>
                     <!--Fin centro -->
                 </div><!-- /.box -->

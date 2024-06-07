@@ -33,7 +33,7 @@ switch ($_GET["op"]){
 			$permiso = array(1,2,6);
 		}
 		if ($tipo =='Admin'){
-			$permiso = array(1,2,3,4,5,6);
+			$permiso = array(1,2,3,5,6);
 		}
 
 		if (empty($idusuario)){		
