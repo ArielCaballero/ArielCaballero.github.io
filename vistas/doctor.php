@@ -32,27 +32,25 @@ if ($_SESSION['acceso']==1)
                         <table id="tbllistado" class="table table-striped table-bordered table-condensed table-hover">
                           <thead>
                             <th>Opciones</th>
+                            <th>Nombre</th>
                             <th>Especialidad</th>
                             <th>RFC</th>
                             <th>Cedula Profesional</th>  
                             <th>Estado</th>
                             <th>Fecha Modificacion</th>
                             <th>Modificado por</th>   
-                            <th>Fecha Modificacion</th>
-                            <th>Modificado por</th> 
                           </thead>
                           <tbody>                            
                           </tbody>
                           <tfoot>
                             <th>Opciones</th>
+                            <th>Nombre</th>
                             <th>Especialidad</th>
                             <th>RFC</th>
                             <th>Cedula Profesional</th>  
                             <th>Estado</th>
                             <th>Fecha Modificacion</th>
-                            <th>Modificado por</th>      
-                            <th>Fecha Modificacion</th>
-                            <th>Modificado por</th>                                 
+                            <th>Modificado por</th>                                     
                           </tfoot>
                         </table>
                     </div>

@@ -57,6 +57,12 @@ Class Doctor
 		$sql="SELECT * FROM doctor";
 		return ejecutarConsulta($sql);
 	}
+
+	public function getusuario($iddoctor)
+	{
+		$sql="SELECT ID_Usuario FROM doctor WHERE ID_Doctor='$iddoctor'";
+		return ejecutarConsultaSimpleFila($sql);
+	}
 }
 
 ?>

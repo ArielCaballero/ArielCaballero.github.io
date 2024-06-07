@@ -57,13 +57,14 @@ switch ($_GET["op"]){
 				 ' <button class="btn btn-danger" onclick="desactivar('.$reg->ID_Doctor.')"><i class="fa fa-close"></i></button>':
 				 '<button class="btn btn-warning" onclick="mostrar('.$reg->ID_Doctor.')"><i class="fa fa-pencil"></i></button>'.
 				 ' <button class="btn btn-primary" onclick="activar('.$reg->ID_Doctor.')"><i class="fa fa-check"></i></button>',
- 				"1"=>$reg->Especialidad,
- 				"2"=>$reg->RFC,
-				"3"=>$reg->Cedula_Profesional,
-				"4"=>($reg->Condicion)?'<span class="label bg-green">Activado</span>':
+ 				"1"=>($usuario->getnombre($doctor->getusuario($reg->ID_Doctor)['ID_Usuario']))['Nombre'],
+				"2"=>$reg->Especialidad,
+ 				"3"=>$reg->RFC,
+				"4"=>$reg->Cedula_Profesional,
+				"5"=>($reg->Condicion)?'<span class="label bg-green">Activado</span>':
  				'<span class="label bg-red">Desactivado</span>',
-				"5"=>$reg->Fecha_Modificacion,
-				"6"=>($usuario->getnombre($reg->ID_Modificacion))['Nombre'],
+				"6"=>$reg->Fecha_Modificacion,
+				"7"=>($usuario->getnombre($reg->ID_Modificacion))['Nombre'],
  				);
  		}
  		$results = array(
