@@ -31,7 +31,7 @@ if (strlen(session_id()) < 1)
     <link rel="stylesheet" type="text/css" href="../public/css/bootstrap-select.min.css">
 
   </head>
-  <body class="hold-transition skin-blue-light sidebar-mini">
+  <body class="hold-transition skin-green-light sidebar-mini">
     <div class="wrapper">
 
       <header class="main-header">
@@ -152,8 +152,7 @@ if (strlen(session_id()) < 1)
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="receta.php"><i class="fa fa-circle-o"></i> Receta</a></li>                
-                <li><a href="lente.php"><i class="fa fa-circle-o"></i> Lentes de Contacto</a></li>          
+                <li><a href="receta.php"><i class="fa fa-circle-o"></i> Receta</a></li>                        
               </ul>
             </li>';
           }
