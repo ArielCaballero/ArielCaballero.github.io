@@ -46,10 +46,10 @@ require 'header.php';
                             <label>E-mail:</label>
                             <input type="text" class="form-control" name="email" id="email" maxlength="256" placeholder="E-mail">
                           </div>
-                          <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                          <div class="hidden">
                             <label>Tipo de Usuario:</label>  
                             <br>                
-                              <select class="form-select form-control" id="tipo", name="tipo" disabled>            
+                              <select class="form-select form-control" id="tipo", name="tipo">            
                                 <option>Cliente</option>
                                 <option>Doctor</option>
                                 <option>Admin</option>
@@ -64,17 +64,17 @@ require 'header.php';
                             <input type="password" class="form-control" name="password" id="password" maxlength="256" placeholder="Constraseña">
                             <input type="hidden" name="oldpassword" id="oldpassword">
                           </div>
-                          <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                          <div class="hidden">
                             <label>Permisos:</label>
                             <ul style="list-style: none;" id="permisos">
                               
                             </ul>
                           </div>
-                          <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">     
+                          <div class="hidden">     
                           <label>Fecha de Modificacion:</label>                       
                             <input type="text" class="form-control" name="fechamod" id="fechamod" maxlength="256" disabled>
                           </div>
-                          <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                          <div class="hidden">
                           <label>Usuario que Modifico:</label>
                             <input type="text" class="form-control" name="idmod" id="idmod" maxlength="256" disabled>
                           </div>
