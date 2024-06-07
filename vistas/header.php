@@ -121,7 +121,17 @@ if (strlen(session_id()) < 1)
                 </li>';
               }
             ?>
-
+          <?php
+              if ($_SESSION['misdatos']==1){
+                echo
+                '<li class="treeview">
+                  <a href="mis_datos.php">
+                    <i class="fa fa-user"></i>
+                    <span>Mis Datos</span>
+                  </a>
+                </li>';
+              }
+            ?>
           <?php
               if ($_SESSION['recetas']==1){
                 echo

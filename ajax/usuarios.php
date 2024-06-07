@@ -27,10 +27,13 @@ switch ($_GET["op"]){
 			$clavehash=hash("SHA256",$password);
 		}
 		if ($tipo =='Cliente'){
-			$permiso = array(1,2);
+			$permiso = array(2,4);
 		}
 		if ($tipo =='Doctor'){
-			$permiso = array(1,2,3);
+			$permiso = array(1,2);
+		}
+		if ($tipo =='Admin'){
+			$permiso = array(1,2,3,4);
 		}
 
 		if (empty($idusuario)){		
@@ -140,6 +143,8 @@ switch ($_GET["op"]){
 	        $_SESSION['nombre']=$fetch->Nombre;
 	        $_SESSION['username']=$fetch->Username;
 
+			$_SESSION['idpaciente']=$usuario->getpaciente($fetch->ID_Usuario)['ID_Paciente'];
+
 	        //Obtenemos los permisos del usuario
 	    	$marcados = $usuario->listarmarcados($fetch->ID_Usuario);
 
@@ -156,6 +161,7 @@ switch ($_GET["op"]){
 			in_array(1,$valores)?$_SESSION['datospaciente']=1:$_SESSION['datospaciente']=0;
 			in_array(2,$valores)?$_SESSION['recetas']=1:$_SESSION['recetas']=0;
 			in_array(3,$valores)?$_SESSION['acceso']=1:$_SESSION['acceso']=0;
+			in_array(4,$valores)?$_SESSION['misdatos']=1:$_SESSION['misdatos']=0;
 
 	    }
 	    echo json_encode($fetch);

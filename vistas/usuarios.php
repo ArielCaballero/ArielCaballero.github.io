@@ -81,6 +81,7 @@ if ($_SESSION['acceso']==1)
                               <select class="form-select form-control" id="tipo", name="tipo">            
                                 <option>Cliente</option>
                                 <option>Doctor</option>
+                                <option>Admin</option>
                               </select>              
                           </div>
                           <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
