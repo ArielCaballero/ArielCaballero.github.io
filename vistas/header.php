@@ -102,8 +102,31 @@ if (strlen(session_id()) < 1)
               <a href="inicio.php">
                 <i class="fa fa-tasks"></i> <span>Inicio</span>
               </a>
-            </li>            
+            </li>  
             <?php
+              if ($_SESSION['agendarcita']==1){
+                echo
+                '<li class="treeview">
+                  <a href="agendarcita.php">
+                    <i class="fa fa-user"></i>
+                    <span>Agendar Citas</span>
+                  </a>
+                </li>';
+              }
+            ?>          
+            <?php
+            if ($_SESSION['confirmarcita']==1){
+              echo
+              '<li class="treeview">
+                <a href="confirmarcita.php">
+                  <i class="fa fa-user"></i>
+                  <span>Revisar Citas</span>
+                </a>
+              </li>';
+            }
+          ?>          
+          <?php
+            
               if ($_SESSION['datospaciente']==1){
                 echo
                 '<li class="treeview">

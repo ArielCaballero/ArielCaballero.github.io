@@ -25,9 +25,11 @@ if (!isset($_SESSION["nombre"])) {
                     <!-- centro -->
                     <div class="panel-body table-responsive" id="listadoregistros">
                         <div class="container">
-                            <a href="datos_paciente.php" class="button">Datos de Paciente</a>
-                            <a href="recetas.php" class="button">Recetas</a>
-                            <a href="acceso.php" class="button">Acceso</a>
+                        <?php if ($_SESSION['datospaciente']==1){echo '<a href="datos_paciente.php" class="button">Datos de Paciente</a>';}?>
+                        <?php if ($_SESSION['recetas']==1){echo '<a href="receta.php" class="button">Recetas</a>';}?>
+                        <?php if ($_SESSION['acceso']==1){echo '<a href="usuarios.php" class="button">Acceso</a>';}?>
+                            
+                            
                         </div>
                     </div>
                     <div class="panel-body" style="height: 400px;" id="formularioregistros">

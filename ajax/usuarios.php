@@ -27,13 +27,13 @@ switch ($_GET["op"]){
 			$clavehash=hash("SHA256",$password);
 		}
 		if ($tipo =='Cliente'){
-			$permiso = array(2,4);
+			$permiso = array(2,4,5);
 		}
 		if ($tipo =='Doctor'){
-			$permiso = array(1,2);
+			$permiso = array(1,2,6);
 		}
 		if ($tipo =='Admin'){
-			$permiso = array(1,2,3,4);
+			$permiso = array(1,2,3,4,5,6);
 		}
 
 		if (empty($idusuario)){		
@@ -79,7 +79,7 @@ switch ($_GET["op"]){
  		while ($reg=$rspta->fetch_object()){
  			$data[]=array(
  				"0"=>'<button class="btn btn-warning" onclick="mostrar('.$reg->ID_Usuario.')"><i class="fa fa-pencil"></i></button>'.
- 					' <button class="btn btn-danger" onclick="eliminar('.$reg->ID_Usuario.')"><i class="fa fa-close"></i></button>',
+ 					'<button class="btn btn-danger" onclick="eliminar('.$reg->ID_Usuario.')"><i class="fa fa-close"></i></button>',
  				"1"=>$reg->Nombre,
  				"2"=>$reg->Direccion,
 				"3"=>$reg->Tel,
@@ -162,6 +162,8 @@ switch ($_GET["op"]){
 			in_array(2,$valores)?$_SESSION['recetas']=1:$_SESSION['recetas']=0;
 			in_array(3,$valores)?$_SESSION['acceso']=1:$_SESSION['acceso']=0;
 			in_array(4,$valores)?$_SESSION['misdatos']=1:$_SESSION['misdatos']=0;
+			in_array(5,$valores)?$_SESSION['agendarcita']=1:$_SESSION['agendarcita']=0;
+			in_array(6,$valores)?$_SESSION['confirmarcita']=1:$_SESSION['confirmarcita']=0;
 
 	    }
 	    echo json_encode($fetch);
