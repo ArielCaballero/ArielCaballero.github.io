@@ -1,6 +1,13 @@
 <?php 
-require_once "../modelos/exp_funcional.php";
+ob_start();
+if (strlen(session_id()) < 1){
+	session_start();//Validamos si existe o no la sesión
+}
 
+require_once "../modelos/exp_funcional.php";
+require_once "../modelos/usuarios.php";
+
+$usuario=new usuario();
 $exp_funcional=new Exp_funcional();
 
 $idexp_funcional=isset($_POST["idexp_funcional"])? limpiarCadena($_POST["idexp_funcional"]):"";
@@ -21,11 +28,11 @@ $add_oi_av=isset($_POST["add_oi_av"])? limpiarCadena($_POST["add_oi_av"]):"";
 switch ($_GET["op"]){
 	case 'guardaryeditar':
 		if (empty($idexp_funcional)){
-			$rspta=$exp_funcional->insertar($idpaciente, $pupilas_pp, $pupilas_c_rup, $pupilas_rec, $queratometria_od, $queratometria_oi, $retinoscopia_od, $retinoscopia_oi, $subjetivo_od, $subjetivo_oi, $add_od_av, $add_oi_av);
+			$rspta=$exp_funcional->insertar($idpaciente, $pupilas_pp, $pupilas_c_rup, $pupilas_rec, $queratometria_od, $queratometria_oi, $retinoscopia_od, $retinoscopia_oi, $subjetivo_od, $subjetivo_oi, $add_od_av, $add_oi_av,$_SESSION['idusuario']);
 			echo $rspta ? "Exploracion Funcional registrada" : "Exploracion Funcional no se pudo registrar";
 		}
 		else {
-			$rspta=$exp_funcional->editar($idexp_funcional,$idpaciente, $pupilas_pp, $pupilas_c_rup, $pupilas_rec, $queratometria_od, $queratometria_oi, $retinoscopia_od, $retinoscopia_oi, $subjetivo_od, $subjetivo_oi, $add_od_av, $add_oi_av);
+			$rspta=$exp_funcional->editar($idexp_funcional,$idpaciente, $pupilas_pp, $pupilas_c_rup, $pupilas_rec, $queratometria_od, $queratometria_oi, $retinoscopia_od, $retinoscopia_oi, $subjetivo_od, $subjetivo_oi, $add_od_av, $add_oi_av,$_SESSION['idusuario']);
 			echo $rspta ? "Exploracion Funcional actualizada" : "Exploracion Funcional no se pudo actualizar";
 		}
 	break;
@@ -73,7 +80,8 @@ switch ($_GET["op"]){
 				"9"=>$reg->Subjetivo_OI,
 				"10"=>$reg->Add_OD_AV,
 				"11"=>$reg->Add_OI_AV,
-				
+				"12"=>$reg->Fecha_Modificacion,
+				"13"=>($usuario->getnombre($reg->ID_Modificacion))['Nombre'],
 
  				);
  		}

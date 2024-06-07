@@ -99,8 +99,8 @@ if (strlen(session_id()) < 1)
           <ul class="sidebar-menu">
             <li class="header"></li>
             <li>
-              <a href="listado.php">
-                <i class="fa fa-tasks"></i> <span>Escritorio</span>
+              <a href="inicio.php">
+                <i class="fa fa-tasks"></i> <span>Inicio</span>
               </a>
             </li>            
             <?php
@@ -167,6 +167,12 @@ if (strlen(session_id()) < 1)
             </li>';
               }
             ?>
+            '<li class="treeview">
+                  <a href="mi_usuario.php">
+                    <i class="fa fa-user"></i>
+                    <span>Mi Usuario</span>
+                  </a>
+                </li>'
             <!-- <li class="treeview">
               <a href="#">
                 <i class="fa fa-bar-chart"></i> <span>Consulta Compras</span>

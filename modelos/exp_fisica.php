@@ -12,17 +12,18 @@ Class exp_fisica
 	}
 
 	//Implementamos un método para insertar registros
-	public function insertar($idpaciente, $vias_lagrimales, $parpados, $globo_ocular, $conjuntivas, $corneas, $iris, $cristalinos, $vitreo, $fondo_ojo)
+	public function insertar($idpaciente, $vias_lagrimales, $parpados, $globo_ocular, $conjuntivas, $corneas, $iris, $cristalinos, $vitreo, $fondo_ojo, $idmodificacion)
 	{
-		$sql="INSERT INTO exploracion_fisica (ID_Paciente, Vias_Lagrimales, Parpados, Globo_Ocular, Conjuntivas, Corneas, Iris_Porcion_Ciliar, Cristalinos, Vitreo, Fondo_Ojo)
-		VALUES ('$idpaciente', '$vias_lagrimales', '$parpados', '$globo_ocular', '$conjuntivas', '$corneas', '$iris', '$cristalinos', '$vitreo', '$fondo_ojo')";
+		$sql="INSERT INTO exploracion_fisica (ID_Paciente, Vias_Lagrimales, Parpados, Globo_Ocular, Conjuntivas, Corneas, Iris_Porcion_Ciliar, Cristalinos, Vitreo, Fondo_Ojo, ID_Modificacion)
+		VALUES ('$idpaciente', '$vias_lagrimales', '$parpados', '$globo_ocular', '$conjuntivas', '$corneas', '$iris', '$cristalinos', '$vitreo', '$fondo_ojo', '$idmodificacion')";
 		return ejecutarConsulta($sql);
 	}
 
 	//Implementamos un método para editar registros
-	public function editar($idexp_fisica,$idpaciente, $vias_lagrimales, $parpados, $globo_ocular, $conjuntivas, $corneas, $iris, $cristalinos, $vitreo, $fondo_ojo)
+	public function editar($idexp_fisica,$idpaciente, $vias_lagrimales, $parpados, $globo_ocular, $conjuntivas, $corneas, $iris, $cristalinos, $vitreo, $fondo_ojo, $idmodificacion)
 	{
-		$sql="UPDATE exploracion_fisica SET ID_paciente='$idpaciente', Vias_Lagrimales='$vias_lagrimales', Parpados='$parpados', Globo_Ocular='$globo_ocular', Conjuntivas='$conjuntivas', Corneas='$corneas', Iris_Porcion_Ciliar='$iris', Cristalinos='$cristalinos', Vitreo='$vitreo', Fondo_Ojo='$fondo_ojo' WHERE ID_Exploracion='$idexp_fisica'";
+		$fechamod=date('Y-m-d');
+		$sql="UPDATE exploracion_fisica SET ID_paciente='$idpaciente', Vias_Lagrimales='$vias_lagrimales', Parpados='$parpados', Globo_Ocular='$globo_ocular', Conjuntivas='$conjuntivas', Corneas='$corneas', Iris_Porcion_Ciliar='$iris', Cristalinos='$cristalinos', Vitreo='$vitreo', Fondo_Ojo='$fondo_ojo', Fecha_Modificacion='$fechamod', ID_Modificacion='$idmodificacion' WHERE ID_Exploracion='$idexp_fisica'";
 		return ejecutarConsulta($sql);
 	}
 

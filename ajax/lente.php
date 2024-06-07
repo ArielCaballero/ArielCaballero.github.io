@@ -1,6 +1,12 @@
 <?php 
+ob_start();
+if (strlen(session_id()) < 1){
+	session_start();//Validamos si existe o no la sesión
+}
 require_once "../modelos/lente.php";
+require_once "../modelos/usuarios.php";
 
+$usuario=new usuario();
 $lente=new lente();
 
 $idlente=isset($_POST["idlente"])? limpiarCadena($_POST["idlente"]):"";
@@ -20,11 +26,11 @@ $observaciones=isset($_POST["observaciones"])? limpiarCadena($_POST["observacion
 switch ($_GET["op"]){
 	case 'guardaryeditar':
 		if (empty($idlente)){
-			$rspta=$lente->insertar($idpaciente, $radio, $diam, $cp, $rx, $grueso, $zo, $pl, $color, $av,  $observaciones);
+			$rspta=$lente->insertar($idpaciente, $radio, $diam, $cp, $rx, $grueso, $zo, $pl, $color, $av,  $observaciones, $_SESSION['idusuario']);
 			echo $rspta ? "Lente registrado" : "Lente no se pudo registrar";
 		}
 		else {
-			$rspta=$lente->editar($idlente,$idpaciente, $radio, $diam, $cp, $rx, $grueso, $zo, $pl, $color, $av, $observaciones);
+			$rspta=$lente->editar($idlente,$idpaciente, $radio, $diam, $cp, $rx, $grueso, $zo, $pl, $color, $av, $observaciones, $_SESSION['idusuario']);
 			echo $rspta ? "Lente actualizado" : "Lente no se pudo actualizar";
 		}
 	break;
@@ -72,6 +78,8 @@ switch ($_GET["op"]){
 				"8"=>$reg->Color,
  				"9"=>$reg->AV,
 				"10"=>$reg->Observaciones,
+				"11"=>$reg->Fecha_Modificacion,
+				"12"=>($usuario->getnombre($reg->ID_Modificacion))['Nombre'],
 
  				);
  		}

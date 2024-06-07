@@ -1,6 +1,13 @@
 <?php 
-require_once "../modelos/historia.php";
+ob_start();
+if (strlen(session_id()) < 1){
+	session_start();//Validamos si existe o no la sesión
+}
 
+require_once "../modelos/historia.php";
+require_once "../modelos/usuarios.php";
+
+$usuario=new usuario();
 $historia=new historia();
 
 $idhistoria=isset($_POST["idhistoria"])? limpiarCadena($_POST["idhistoria"]):"";
@@ -17,11 +24,11 @@ $fecha=isset($_POST["fecha"])? limpiarCadena($_POST["fecha"]):"";
 switch ($_GET["op"]){
 	case 'guardaryeditar':
 		if (empty($idhistoria)){
-			$rspta=$historia->insertar($idpaciente, $interrogatorio, $hg, $edad, $sexo, $ocupacion, $grad, $fecha);
+			$rspta=$historia->insertar($idpaciente, $interrogatorio, $hg, $edad, $sexo, $ocupacion, $grad, $fecha,  $_SESSION['idusuario']);
 			echo $rspta ? "Historia Ocular registrada" : "Historia Ocular no se pudo registrar";
 		}
 		else {
-			$rspta=$historia->editar($idhistoria,$idpaciente, $interrogatorio, $hg, $edad, $sexo, $ocupacion, $grad, $fecha);
+			$rspta=$historia->editar($idhistoria,$idpaciente, $interrogatorio, $hg, $edad, $sexo, $ocupacion, $grad, $fecha, $_SESSION['idusuario']);
 			echo $rspta ? "Historia Ocular actualizada" : "Historia Ocular no se pudo actualizar";
 		}
 	break;
@@ -65,6 +72,8 @@ switch ($_GET["op"]){
 				"5"=>$reg->Ocupacion,
  				"6"=>($reg->Graduacion_Usa == 1? 'Si': 'No'),
 				"7"=>$reg->Fecha_Graduacion,
+				"8"=>$reg->Fecha_Modificacion,
+				"9"=>($usuario->getnombre($reg->ID_Modificacion))['Nombre'],
 
  				);
  		}

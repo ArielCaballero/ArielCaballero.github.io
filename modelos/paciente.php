@@ -12,20 +12,21 @@ Class Paciente
 	}
 
 	//Implementamos un método para insertar registros
-	public function insertar($idusuario,$colonia,$ciudad,$cp,$edo,$celular, $rfc, $fn)
+	public function insertar($idusuario,$colonia,$ciudad,$cp,$edo,$celular, $rfc, $fn,$idmodificacion)
 	{
 		if ($idusuario == ''){
 			$idusuario = 'null';
 		}
-		$sql="INSERT INTO paciente (ID_Usuario, Colonia, Ciudad, CP, EDO, Celular, RFC, FN, Condicion)
-		VALUES ('$idusuario','$colonia','$ciudad','$cp','$edo','$celular','$rfc', '$fn', '1')";
+		$sql="INSERT INTO paciente (ID_Usuario, Colonia, Ciudad, CP, EDO, Celular, RFC, FN, Condicion, ID_Modificacion)
+		VALUES ('$idusuario','$colonia','$ciudad','$cp','$edo','$celular','$rfc', '$fn', '1', '$idmodificacion')";
 		return ejecutarConsulta($sql);
 	}
 
 	//Implementamos un método para editar registros
-	public function editar($idpaciente,$idusuario,$colonia,$ciudad,$cp,$edo,$celular, $rfc, $fn)
+	public function editar($idpaciente,$idusuario,$colonia,$ciudad,$cp,$edo,$celular, $rfc, $fn, $idmodificacion)
 	{
-		$sql="UPDATE paciente SET ID_Usuario='$idusuario', Colonia='$colonia', Ciudad='$ciudad', CP='$cp',  EDO='$edo', Celular='$celular', RFC='$rfc', FN = '$fn' WHERE ID_Paciente='$idpaciente'";
+		$fechamod = date('Y-m-d');
+		$sql="UPDATE paciente SET ID_Usuario='$idusuario', Colonia='$colonia', Ciudad='$ciudad', CP='$cp',  EDO='$edo', Celular='$celular', RFC='$rfc', FN = '$fn', Fecha_Modificacion='$fechamod', ID_Modificacion='$idmodificacion' WHERE ID_Paciente='$idpaciente'";
 		return ejecutarConsulta($sql);
 	}
 

@@ -12,20 +12,21 @@ Class Lente
 	}
 
 	//Implementamos un método para insertar registros
-	public function insertar($idpaciente, $radio, $diam, $cp, $rx, $grueso, $zo, $pl, $color, $av, $observaciones)
+	public function insertar($idpaciente, $radio, $diam, $cp, $rx, $grueso, $zo, $pl, $color, $av, $observaciones, $idmodificacion)
 	{
 		if ($idpaciente == ''){
 			$idpaciente = 'null';
 		}
-		$sql="INSERT INTO lente_contacto (ID_Paciente, Radio, Diam, CP, RX, Grueso, ZO, PL, Color, AV, Observaciones)
-		VALUES ('$idpaciente', '$radio', '$diam', '$cp', '$rx', '$grueso', '$zo', '$pl', '$color', '$av', '$observaciones')";
+		$sql="INSERT INTO lente_contacto (ID_Paciente, Radio, Diam, CP, RX, Grueso, ZO, PL, Color, AV, Observaciones, ID_Modificacion)
+		VALUES ('$idpaciente', '$radio', '$diam', '$cp', '$rx', '$grueso', '$zo', '$pl', '$color', '$av', '$observaciones', '$idmodificacion')";
 		return ejecutarConsulta($sql);
 	}
 
 	//Implementamos un método para editar registros
-	public function editar($idLente,$idpaciente, $radio, $diam, $cp, $rx, $grueso, $zo, $pl, $color, $av, $observaciones)
+	public function editar($idLente,$idpaciente, $radio, $diam, $cp, $rx, $grueso, $zo, $pl, $color, $av, $observaciones, $idmodificacion)
 	{
-		$sql="UPDATE lente_contacto SET ID_paciente='$idpaciente', Radio='$radio', Diam='$diam', CP='$cp', RX='$rx', Grueso='$grueso', ZO='$zo', PL='$pl', Color='$color', AV='$av', Observaciones = '$observaciones' WHERE ID_Lente='$idLente'";
+		$fechamod = date('Y-m-d');
+		$sql="UPDATE lente_contacto SET ID_paciente='$idpaciente', Radio='$radio', Diam='$diam', CP='$cp', RX='$rx', Grueso='$grueso', ZO='$zo', PL='$pl', Color='$color', AV='$av', Observaciones = '$observaciones', Fecha_Modificacion='$fechamod', ID_Modificacion='$idmodificacion' WHERE ID_Lente='$idLente'";
 		return ejecutarConsulta($sql);
 	}
 

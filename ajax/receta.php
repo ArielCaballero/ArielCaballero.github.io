@@ -1,6 +1,12 @@
 <?php 
+ob_start();
+if (strlen(session_id()) < 1){
+	session_start();//Validamos si existe o no la sesión
+}
 require_once "../modelos/receta.php";
+require_once "../modelos/usuarios.php";
 
+$usuario=new usuario();
 $receta=new Receta();
 
 $idreceta=isset($_POST["idreceta"])? limpiarCadena($_POST["idreceta"]):"";
@@ -17,12 +23,12 @@ $original=isset($_POST["original"])? limpiarCadena($_POST["original"]):"";
 switch ($_GET["op"]){
 	case 'guardaryeditar':
 		if (empty($idreceta)){
-			$rspta=$receta->insertar($idpaciente, $iddoctor,$fecha,$cristal,$plastico,$armazon,$color, $tam, $original);
-			echo $rspta ? "Receta registrado" : "Receta no se pudo registrar";
+			$rspta=$receta->insertar($idpaciente, $iddoctor,$fecha,$cristal,$plastico,$armazon,$color, $tam, $original, $_SESSION['idusuario']);
+			echo $rspta ? "Receta registrada" : "Receta no se pudo registrar";
 		}
 		else {
-			$rspta=$receta->editar($idreceta,$idpaciente, $iddoctor,$fecha,$cristal,$plastico,$armazon,$color, $tam, $original);
-			echo $rspta ? "Receta actualizado" : "Receta no se pudo actualizar";
+			$rspta=$receta->editar($idreceta,$idpaciente, $iddoctor,$fecha,$cristal,$plastico,$armazon,$color, $tam, $original, $_SESSION['idusuario']);
+			echo $rspta ? "Receta actualizada" : "Receta no se pudo actualizar";
 		}
 	break;
 
@@ -66,6 +72,8 @@ switch ($_GET["op"]){
 				"5"=>$reg->Color_Armazon,
  				"6"=>$reg->Tamaño_y_Pte,
 				"7"=>$reg->Original,
+				"8"=>$reg->Fecha_Modificacion,
+				"9"=>($usuario->getnombre($reg->ID_Modificacion))['Nombre'],
  				);
  		}
  		$results = array(

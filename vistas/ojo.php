@@ -47,6 +47,8 @@ if ($_SESSION['datospaciente']==1)
                             <th>Agudeza Visual C</th>
                             <th>Agudeza Visual L</th>
                             <th>Agudeza Visual C_C</th>
+                            <th>Fecha Modificacion</th>
+                            <th>Modificado por</th> 
                           </thead>
                           <tbody>                            
                           </tbody>
@@ -66,7 +68,9 @@ if ($_SESSION['datospaciente']==1)
                             <th>Agudeza Visual S_L</th>
                             <th>Agudeza Visual C</th>
                             <th>Agudeza Visual L</th>
-                            <th>Agudeza Visual C_C</th>                                      
+                            <th>Agudeza Visual C_C</th>          
+                            <th>Fecha Modificacion</th>
+                            <th>Modificado por</th>                             
                           </tfoot>
                         </table>
                     </div>

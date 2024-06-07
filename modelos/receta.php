@@ -12,17 +12,18 @@ Class Receta
 	}
 
 	//Implementamos un método para insertar registros
-	public function insertar($idpaciente, $iddoctor,$fecha,$cristal,$plastico,$armazon,$color, $tam, $original)
+	public function insertar($idpaciente, $iddoctor,$fecha,$cristal,$plastico,$armazon,$color, $tam, $original, $idmodificacion)
 	{
-		$sql="INSERT INTO receta (ID_Paciente, ID_Doctor, Fecha, Cristal, Plastico, Armazon, Color_Armazon, Tamaño_y_Pte, Original)
-		VALUES ('$idpaciente','$iddoctor','$fecha','$cristal','$plastico','$armazon','$color', '$tam', '$original')";
+		$sql="INSERT INTO receta (ID_Paciente, ID_Doctor, Fecha, Cristal, Plastico, Armazon, Color_Armazon, Tamaño_y_Pte, Original, ID_Modificacion)
+		VALUES ('$idpaciente','$iddoctor','$fecha','$cristal','$plastico','$armazon','$color', '$tam', '$original', '$idmodificacion')";
 		return ejecutarConsulta($sql);
 	}
 
 	//Implementamos un método para editar registros
-	public function editar($idreceta, $idpaciente, $iddoctor,$fecha,$cristal,$plastico,$armazon,$color, $tam, $original)
+	public function editar($idreceta, $idpaciente, $iddoctor,$fecha,$cristal,$plastico,$armazon,$color, $tam, $original, $idmodificacion)
 	{
-		$sql="UPDATE receta SET ID_Paciente='$idpaciente', ID_Doctor='$iddoctor', Fecha='$fecha', Cristal='$cristal', Plastico='$plastico', Armazon='$armazon', Color_Armazon='$color', Tamaño_y_Pte='$tam', Original='$original' WHERE ID_Receta='$idreceta'";
+		$fechamod = date('Y-m-d');
+		$sql="UPDATE receta SET ID_Paciente='$idpaciente', ID_Doctor='$iddoctor', Fecha='$fecha', Cristal='$cristal', Plastico='$plastico', Armazon='$armazon', Color_Armazon='$color', Tamaño_y_Pte='$tam', Original='$original', Fecha_Modificacion='$fechamod', ID_Modificacion='$idmodificacion' WHERE ID_Receta='$idreceta'";
 		return ejecutarConsulta($sql);
 	}
 

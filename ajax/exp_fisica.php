@@ -1,6 +1,13 @@
 <?php 
-require_once "../modelos/exp_fisica.php";
+ob_start();
+if (strlen(session_id()) < 1){
+	session_start();//Validamos si existe o no la sesión
+}
 
+require_once "../modelos/exp_fisica.php";
+require_once "../modelos/usuarios.php";
+
+$usuario=new usuario();
 $exp_fisica=new Exp_fisica();
 
 $idexp_fisica=isset($_POST["idexp_fisica"])? limpiarCadena($_POST["idexp_fisica"]):"";
@@ -18,11 +25,11 @@ $fondo_ojo=isset($_POST["fondo_ojo"])? limpiarCadena($_POST["fondo_ojo"]):"";
 switch ($_GET["op"]){
 	case 'guardaryeditar':
 		if (empty($idexp_fisica)){
-			$rspta=$exp_fisica->insertar($idpaciente, $vias_lagrimales, $parpados, $globo_ocular, $conjuntivas, $corneas, $iris, $cristalinos, $vitreo, $fondo_ojo);
+			$rspta=$exp_fisica->insertar($idpaciente, $vias_lagrimales, $parpados, $globo_ocular, $conjuntivas, $corneas, $iris, $cristalinos, $vitreo, $fondo_ojo, $_SESSION['idusuario']);
 			echo $rspta ? "Exploracion Fisica registrada" : "Exploracion Fisica no se pudo registrar";
 		}
 		else {
-			$rspta=$exp_fisica->editar($idexp_fisica, $idpaciente, $vias_lagrimales, $parpados, $globo_ocular, $conjuntivas, $corneas, $iris, $cristalinos, $vitreo, $fondo_ojo);
+			$rspta=$exp_fisica->editar($idexp_fisica, $idpaciente, $vias_lagrimales, $parpados, $globo_ocular, $conjuntivas, $corneas, $iris, $cristalinos, $vitreo, $fondo_ojo, $_SESSION['idusuario']);
 			echo $rspta ? "Exploracion Fisica actualizada" : "Exploracion Fisica no se pudo actualizar";
 		}
 	break;
@@ -68,7 +75,8 @@ switch ($_GET["op"]){
 				"7"=>$reg->Cristalinos,
 				"8"=>$reg->Vitreo,
 				"9"=>$reg->Fondo_Ojo,
-				
+				"10"=>$reg->Fecha_Modificacion,
+				"11"=>($usuario->getnombre($reg->ID_Modificacion))['Nombre'],
 
  				);
  		}

@@ -1,6 +1,13 @@
 <?php 
-require_once "../modelos/ojo.php";
+ob_start();
+if (strlen(session_id()) < 1){
+	session_start();//Validamos si existe o no la sesión
+}
 
+require_once "../modelos/ojo.php";
+require_once "../modelos/usuarios.php";
+
+$usuario=new usuario();
 $ojo=new Ojo();
 
 $idojo=isset($_POST["idojo"])? limpiarCadena($_POST["idojo"]):"";
@@ -24,11 +31,11 @@ $avcc=isset($_POST["avcc"])? limpiarCadena($_POST["avcc"]):"";
 switch ($_GET["op"]){
 	case 'guardaryeditar':
 		if (empty($idojo)){
-			$rspta=$ojo->insertar($idpaciente, $tipo, $esferico, $cilindrico, $eje, $prisma, $altura, $oblea, $color, $av, $pio, $estereopsis, $avsl, $avc, $avl, $avcc);
+			$rspta=$ojo->insertar($idpaciente, $tipo, $esferico, $cilindrico, $eje, $prisma, $altura, $oblea, $color, $av, $pio, $estereopsis, $avsl, $avc, $avl, $avcc, $_SESSION['idusuario']);
 			echo $rspta ? "Ojo registrado" : "Ojo no se pudo registrar";
 		}
 		else {
-			$rspta=$ojo->editar($idojo,$idpaciente, $tipo, $esferico, $cilindrico, $eje, $prisma, $altura, $oblea, $color, $av, $pio, $estereopsis, $avsl, $avc, $avl, $avcc);
+			$rspta=$ojo->editar($idojo,$idpaciente, $tipo, $esferico, $cilindrico, $eje, $prisma, $altura, $oblea, $color, $av, $pio, $estereopsis, $avsl, $avc, $avl, $avcc,$_SESSION['idusuario']);
 			echo $rspta ? "Ojo actualizado" : "Ojo no se pudo actualizar";
 		}
 	break;
@@ -75,7 +82,8 @@ switch ($_GET["op"]){
 				"13"=>$reg->Agudeza_Visual_C,
 				"14"=>$reg->Agudeza_Visual_L,
 				"15"=>$reg->Agudeza_Visual_C_C,
-
+				"16"=>$reg->Fecha_Modificacion,
+				"17"=>($usuario->getnombre($reg->ID_Modificacion))['Nombre'],
 
 
 

@@ -1,7 +1,14 @@
 <?php 
+ob_start();
+if (strlen(session_id()) < 1){
+	session_start();//Validamos si existe o no la sesión
+}
 require_once "../modelos/paciente.php";
+require_once "../modelos/usuarios.php";
 
+$usuario=new Usuario();
 $paciente=new paciente();
+
 
 $idpaciente=isset($_POST["idpaciente"])? limpiarCadena($_POST["idpaciente"]):"";
 $idusuario=isset($_POST["idusuario"])? limpiarCadena($_POST["idusuario"]):"";
@@ -16,11 +23,11 @@ $fn=isset($_POST["fn"])? limpiarCadena($_POST["fn"]):"";
 switch ($_GET["op"]){
 	case 'guardaryeditar':
 		if (empty($idpaciente)){
-			$rspta=$paciente->insertar($idusuario,$colonia,$ciudad,$cp,$edo,$celular, $rfc, $fn);
+			$rspta=$paciente->insertar($idusuario,$colonia,$ciudad,$cp,$edo,$celular, $rfc, $fn, $_SESSION['idusuario']);
 			echo $rspta ? "paciente registrado" : "paciente no se pudo registrar";
 		}
 		else {
-			$rspta=$paciente->editar($idpaciente,$idusuario,$colonia,$ciudad,$cp,$edo,$celular, $rfc, $fn);
+			$rspta=$paciente->editar($idpaciente,$idusuario,$colonia,$ciudad,$cp,$edo,$celular, $rfc, $fn, $_SESSION['idusuario']);
 			echo $rspta ? "paciente actualizado" : "paciente no se pudo actualizar";
 		}
 	break;
@@ -63,7 +70,9 @@ switch ($_GET["op"]){
  				"6"=>$reg->RFC,
 				"7"=>$reg->FN,
 				"8"=>($reg->Condicion)?'<span class="label bg-green">Activado</span>':
- 				'<span class="label bg-red">Desactivado</span>'
+ 				'<span class="label bg-red">Desactivado</span>',
+				"9"=>$reg->Fecha_Modificacion,
+				"10"=>($usuario->getnombre($reg->ID_Modificacion))['Nombre'],
  				);
  		}
  		$results = array(

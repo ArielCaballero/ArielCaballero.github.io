@@ -12,17 +12,18 @@ Class historia
 	}
 
 	//Implementamos un método para insertar registros
-	public function insertar($idpaciente, $interrogatorio, $hg, $edad, $sexo, $ocupacion, $graduacion, $fecha)
+	public function insertar($idpaciente, $interrogatorio, $hg, $edad, $sexo, $ocupacion, $graduacion, $fecha, $idmodificacion)
 	{
-		$sql="INSERT INTO historia_ocular (ID_Paciente, Interrogatorio, Historia_General, Edad, Sexo, Ocupacion, Graduacion_Usa, Fecha_Graduacion)
-		VALUES ('$idpaciente', '$interrogatorio', '$hg', '$edad', '$sexo', '$ocupacion', '$graduacion', '$fecha')";
+		$sql="INSERT INTO historia_ocular (ID_Paciente, Interrogatorio, Historia_General, Edad, Sexo, Ocupacion, Graduacion_Usa, Fecha_Graduacion, ID_Modificacion)
+		VALUES ('$idpaciente', '$interrogatorio', '$hg', '$edad', '$sexo', '$ocupacion', '$graduacion', '$fecha', '$idmodificacion')";
 		return ejecutarConsulta($sql);
 	}
 
 	//Implementamos un método para editar registros
-	public function editar($idhistoria,$idpaciente, $interrogatorio, $hg, $edad, $sexo, $ocupacion, $graduacion, $fecha)
+	public function editar($idhistoria,$idpaciente, $interrogatorio, $hg, $edad, $sexo, $ocupacion, $graduacion, $fecha, $idmodificacion)
 	{
-		$sql="UPDATE historia_ocular SET ID_paciente='$idpaciente', Interrogatorio='$interrogatorio', Historia_General='$hg', Edad='$edad', Sexo='$sexo', Ocupacion='$ocupacion', Graduacion_Usa='$graduacion', Fecha_Graduacion='$fecha' WHERE ID_Historia_Ocular='$idhistoria'";
+		$fechamod=date('Y-m-d');
+		$sql="UPDATE historia_ocular SET ID_paciente='$idpaciente', Interrogatorio='$interrogatorio', Historia_General='$hg', Edad='$edad', Sexo='$sexo', Ocupacion='$ocupacion', Graduacion_Usa='$graduacion', Fecha_Graduacion='$fecha', Fecha_Modificacion='$fechamod', ID_Modificacion='$idmodificacion' WHERE ID_Historia_Ocular='$idhistoria'";
 		return ejecutarConsulta($sql);
 	}
 

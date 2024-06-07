@@ -12,20 +12,21 @@ Class Ojo
 	}
 
 	//Implementamos un método para insertar registros
-	public function insertar($idpaciente, $tipo, $esferico, $cilindrico, $eje, $prisma, $altura, $oblea, $color, $av, $pio, $estereopsis, $avsl, $avc, $avl, $avcc)
+	public function insertar($idpaciente, $tipo, $esferico, $cilindrico, $eje, $prisma, $altura, $oblea, $color, $av, $pio, $estereopsis, $avsl, $avc, $avl, $avcc, $idmodificacion)
 	{
 		if ($idpaciente == ''){
 			$idpaciente = 'null';
 		}
-		$sql="INSERT INTO ojo (ID_Paciente, Tipo, Esferico, Cilindrico, Eje, Prisma, Altura, Oblea, Color, AV, PIO, Estereopsis, Agudeza_Visual_S_L, Agudeza_Visual_C, Agudeza_Visual_L, Agudeza_Visual_C_C)
-		VALUES ('$idpaciente', '$tipo', '$esferico', '$cilindrico', '$eje', '$prisma', '$altura', '$oblea', '$color', '$av', '$pio', '$estereopsis', '$avsl', '$avc', '$avl', '$avcc')";
+		$sql="INSERT INTO ojo (ID_Paciente, Tipo, Esferico, Cilindrico, Eje, Prisma, Altura, Oblea, Color, AV, PIO, Estereopsis, Agudeza_Visual_S_L, Agudeza_Visual_C, Agudeza_Visual_L, Agudeza_Visual_C_C, ID_Modificacion)
+		VALUES ('$idpaciente', '$tipo', '$esferico', '$cilindrico', '$eje', '$prisma', '$altura', '$oblea', '$color', '$av', '$pio', '$estereopsis', '$avsl', '$avc', '$avl', '$avcc', '$idmodificacion')";
 		return ejecutarConsulta($sql);
 	}
 
 	//Implementamos un método para editar registros
-	public function editar($idojo,$idpaciente, $tipo, $esferico, $cilindrico, $eje, $prisma, $altura, $oblea, $color, $av, $pio, $estereopsis, $avsl, $avc, $avl, $avcc)
+	public function editar($idojo,$idpaciente, $tipo, $esferico, $cilindrico, $eje, $prisma, $altura, $oblea, $color, $av, $pio, $estereopsis, $avsl, $avc, $avl, $avcc, $idmodificacion)
 	{
-		$sql="UPDATE ojo SET ID_paciente='$idpaciente', Tipo='$tipo', Esferico='$esferico', Cilindrico='$cilindrico', Eje='$eje', Prisma='$prisma', Altura='$altura', Oblea='$oblea', Color='$color', AV='$av', PIO='$pio', Estereopsis='$estereopsis', Agudeza_Visual_S_L='$avsl', Agudeza_Visual_C='$avc', Agudeza_Visual_L='$avl', Agudeza_Visual_C_C='$avcc' WHERE ID_Ojo='$idojo'";
+		$fechamod = date('Y-m-d');
+		$sql="UPDATE ojo SET ID_paciente='$idpaciente', Tipo='$tipo', Esferico='$esferico', Cilindrico='$cilindrico', Eje='$eje', Prisma='$prisma', Altura='$altura', Oblea='$oblea', Color='$color', AV='$av', PIO='$pio', Estereopsis='$estereopsis', Agudeza_Visual_S_L='$avsl', Agudeza_Visual_C='$avc', Agudeza_Visual_L='$avl', Agudeza_Visual_C_C='$avcc', Fecha_Modificacion='$fechamod', ID_Modificacion='$idmodificacion' WHERE ID_Ojo='$idojo'";
 		return ejecutarConsulta($sql);
 	}
 

@@ -12,20 +12,21 @@ Class Doctor
 	}
 
 	//Implementamos un método para insertar registros
-	public function insertar($idusuario,$especialidad, $rfc, $cedula)
+	public function insertar($idusuario,$especialidad, $rfc, $cedula, $idmodificacion)
 	{
 		if ($idusuario == ''){
 			$idusuario = 'null';
 		}
-		$sql="INSERT INTO doctor (ID_Usuario, Especialidad, RFC, Cedula_Profesional, Condicion)
-		VALUES ('$idusuario','$especialidad','$rfc', '$cedula', '1')";
+		$sql="INSERT INTO doctor (ID_Usuario, Especialidad, RFC, Cedula_Profesional, Condicion, ID_Modificacion)
+		VALUES ('$idusuario','$especialidad','$rfc', '$cedula', '1', '$idmodificacion')";
 		return ejecutarConsulta($sql);
 	}
 
 	//Implementamos un método para editar registros
-	public function editar($iddoctor,$idusuario,$especialidad, $rfc, $cedula)
+	public function editar($iddoctor,$idusuario,$especialidad, $rfc, $cedula, $idmodificacion)
 	{
-		$sql="UPDATE doctor SET ID_Usuario='$idusuario', Especialidad='$especialidad', RFC='$rfc', Cedula_Profesional = '$cedula' WHERE ID_Doctor='$iddoctor'";
+		$fechamod=date('Y-m-d');
+		$sql="UPDATE doctor SET ID_Usuario='$idusuario', Especialidad='$especialidad', RFC='$rfc', Cedula_Profesional = '$cedula', Fecha_Modificacion='$fechamod', ID_Modificacion='$idmodificacion' WHERE ID_Doctor='$iddoctor'";
 		return ejecutarConsulta($sql);
 	}
 

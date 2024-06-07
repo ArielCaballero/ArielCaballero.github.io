@@ -40,7 +40,9 @@ if ($_SESSION['datospaciente']==1)
                             <th>Iris Porcion Ciliar</th>
                             <th>Cristalinos</th> 
                             <th>Vitreo</th>
-                            <th>Fondo Ojo</th>                         
+                            <th>Fondo Ojo</th>       
+                            <th>Fecha Modificacion</th>
+                            <th>Modificado por</th>                   
                           </thead>
                           <tbody>                            
                           </tbody>
@@ -54,7 +56,9 @@ if ($_SESSION['datospaciente']==1)
                             <th>Iris Porcion Ciliar</th>
                             <th>Cristalinos</th> 
                             <th>Vitreo</th>
-                            <th>Fondo Ojo</th>                         
+                            <th>Fondo Ojo</th>          
+                            <th>Fecha Modificacion</th>
+                            <th>Modificado por</th>                
                           </tfoot>
                         </table>
                     </div>

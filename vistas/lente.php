@@ -42,6 +42,8 @@ if ($_SESSION['recetas']==1)
                             <th>Color</th>
                             <th>AV</th>
                             <th>Observaciones</th>
+                            <th>Fecha Modificacion</th>
+                            <th>Modificado por</th>    
                           </thead>
                           <tbody>                            
                           </tbody>
@@ -56,7 +58,9 @@ if ($_SESSION['recetas']==1)
                             <th>PL</th>  
                             <th>Color</th>
                             <th>AV</th>
-                            <th>Observaciones</th>                                      
+                            <th>Observaciones</th>
+                            <th>Fecha Modificacion</th>
+                            <th>Modificado por</th>                                      
                           </tfoot>
                         </table>
                     </div>

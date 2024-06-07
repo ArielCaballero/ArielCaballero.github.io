@@ -36,6 +36,10 @@ if ($_SESSION['acceso']==1)
                             <th>RFC</th>
                             <th>Cedula Profesional</th>  
                             <th>Estado</th>
+                            <th>Fecha Modificacion</th>
+                            <th>Modificado por</th>   
+                            <th>Fecha Modificacion</th>
+                            <th>Modificado por</th> 
                           </thead>
                           <tbody>                            
                           </tbody>
@@ -44,7 +48,11 @@ if ($_SESSION['acceso']==1)
                             <th>Especialidad</th>
                             <th>RFC</th>
                             <th>Cedula Profesional</th>  
-                            <th>Estado</th>                                     
+                            <th>Estado</th>
+                            <th>Fecha Modificacion</th>
+                            <th>Modificado por</th>      
+                            <th>Fecha Modificacion</th>
+                            <th>Modificado por</th>                                 
                           </tfoot>
                         </table>
                     </div>

@@ -12,17 +12,18 @@ Class Exp_funcional
 	}
 
 	//Implementamos un método para insertar registros
-	public function insertar($idpaciente, $pupilas_pp, $pupilas_c_rup, $pupilas_rec, $queratometria_od, $queratometria_oi, $retinoscopia_od, $retinoscopia_oi, $subjetivo_od, $subjetivo_oi, $add_od_av, $add_oi_av)
+	public function insertar($idpaciente, $pupilas_pp, $pupilas_c_rup, $pupilas_rec, $queratometria_od, $queratometria_oi, $retinoscopia_od, $retinoscopia_oi, $subjetivo_od, $subjetivo_oi, $add_od_av, $add_oi_av, $idmodificacion)
 	{
-		$sql="INSERT INTO exploracion_funcional (ID_Paciente, Pupilas_PP, Pupilas_C_Rup, Pupilas_Rec, Queratometria_OD, Queratometria_OI, Retinoscopia_OD, Retinoscopia_OI, Subjetivo_OD, Subjetivo_OI, Add_OD_AV, Add_OI_AV)
-		VALUES ('$idpaciente', '$pupilas_pp', '$pupilas_c_rup', '$pupilas_rec', '$queratometria_od', '$queratometria_oi', '$retinoscopia_od', '$retinoscopia_oi', '$subjetivo_od', '$subjetivo_oi', '$add_od_av', '$add_oi_av')";
+		$sql="INSERT INTO exploracion_funcional (ID_Paciente, Pupilas_PP, Pupilas_C_Rup, Pupilas_Rec, Queratometria_OD, Queratometria_OI, Retinoscopia_OD, Retinoscopia_OI, Subjetivo_OD, Subjetivo_OI, Add_OD_AV, Add_OI_AV, ID_Modificacion)
+		VALUES ('$idpaciente', '$pupilas_pp', '$pupilas_c_rup', '$pupilas_rec', '$queratometria_od', '$queratometria_oi', '$retinoscopia_od', '$retinoscopia_oi', '$subjetivo_od', '$subjetivo_oi', '$add_od_av', '$add_oi_av', '$idmodificacion')";
 		return ejecutarConsulta($sql);
 	}
 
 	//Implementamos un método para editar registros
-	public function editar($idexp_funcional,$idpaciente, $pupilas_pp, $pupilas_c_rup, $pupilas_rec, $queratometria_od, $queratometria_oi, $retinoscopia_od, $retinoscopia_oi, $subjetivo_od, $subjetivo_oi, $add_od_av, $add_oi_av)
+	public function editar($idexp_funcional,$idpaciente, $pupilas_pp, $pupilas_c_rup, $pupilas_rec, $queratometria_od, $queratometria_oi, $retinoscopia_od, $retinoscopia_oi, $subjetivo_od, $subjetivo_oi, $add_od_av, $add_oi_av, $idmodificacion)
 	{
-		$sql="UPDATE exploracion_funcional SET ID_paciente='$idpaciente', Pupilas_PP='$pupilas_pp', Pupilas_C_Rup='$pupilas_c_rup', Pupilas_Rec='$pupilas_rec', Queratometria_OD='$queratometria_od', Queratometria_OI='$queratometria_oi', Retinoscopia_OD='$retinoscopia_od', Retinoscopia_OI='$retinoscopia_oi', Subjetivo_OD='$subjetivo_od', Subjetivo_OI='$subjetivo_oi', Add_OD_AV='$add_od_av', Add_OI_AV='$add_oi_av' WHERE ID_Exploracion_Funcional='$idexp_funcional'";
+		$fechamod=date('Y-m-d');
+		$sql="UPDATE exploracion_funcional SET ID_paciente='$idpaciente', Pupilas_PP='$pupilas_pp', Pupilas_C_Rup='$pupilas_c_rup', Pupilas_Rec='$pupilas_rec', Queratometria_OD='$queratometria_od', Queratometria_OI='$queratometria_oi', Retinoscopia_OD='$retinoscopia_od', Retinoscopia_OI='$retinoscopia_oi', Subjetivo_OD='$subjetivo_od', Subjetivo_OI='$subjetivo_oi', Add_OD_AV='$add_od_av', Add_OI_AV='$add_oi_av', Fecha_Modificacion='$fechamod', ID_Modificacion='$idmodificacion' WHERE ID_Exploracion_Funcional='$idexp_funcional'";
 		return ejecutarConsulta($sql);
 	}
 

@@ -38,7 +38,9 @@ if ($_SESSION['datospaciente']==1)
                             <th>Sexo</th>
                             <th>Ocupacion</th>
                             <th>Usa Graduacion</th>
-                            <th>Fecha Graduacion</th>                              
+                            <th>Fecha Graduacion</th>    
+                            <th>Fecha Modificacion</th>
+                            <th>Modificado por</th>                           
                           </thead>
                           <tbody>                            
                           </tbody>
@@ -50,7 +52,9 @@ if ($_SESSION['datospaciente']==1)
                             <th>Sexo</th>
                             <th>Ocupacion</th>
                             <th>Graduacion que Usa</th>
-                            <th>Fecha Graduacion</th>                                       
+                            <th>Fecha Graduacion</th>     
+                            <th>Fecha Modificacion</th>
+                            <th>Modificado por</th>                                   
                           </tfoot>
                         </table>
                     </div>

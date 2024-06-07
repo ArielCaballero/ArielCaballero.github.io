@@ -43,6 +43,8 @@ if ($_SESSION['datospaciente']==1)
                             <th>Subjetivo Ojo Izquierdo</th>                               
                             <th>Adicion Ojo Derecho AV</th>
                             <th>Adicion Ojo Izquierdo AV</th> 
+                            <th>Fecha Modificacion</th>
+                            <th>Modificado por</th> 
                           </thead>
                           <tbody>                            
                           </tbody>
@@ -58,7 +60,9 @@ if ($_SESSION['datospaciente']==1)
                             <th>Subjetivo Ojo Derecho</th>
                             <th>Subjetivo Ojo Izquierdo</th>                               
                             <th>Adicion Ojo Derecho AV</th>
-                            <th>Adicion Ojo Izquierdo AV</th>                                       
+                            <th>Adicion Ojo Izquierdo AV</th> 
+                            <th>Fecha Modificacion</th>
+                            <th>Modificado por</th>                                       
                           </tfoot>
                         </table>
                     </div>

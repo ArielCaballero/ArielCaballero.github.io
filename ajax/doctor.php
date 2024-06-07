@@ -1,6 +1,12 @@
 <?php 
+ob_start();
+if (strlen(session_id()) < 1){
+	session_start();//Validamos si existe o no la sesión
+}
 require_once "../modelos/doctor.php";
+require_once "../modelos/usuarios.php";
 
+$usuario=new Usuario();
 $doctor=new Doctor();
 
 $iddoctor=isset($_POST["iddoctor"])? limpiarCadena($_POST["iddoctor"]):"";
@@ -12,11 +18,11 @@ $cedula=isset($_POST["cedula"])? limpiarCadena($_POST["cedula"]):"";
 switch ($_GET["op"]){
 	case 'guardaryeditar':
 		if (empty($iddoctor)){
-			$rspta=$doctor->insertar($idusuario,$especialidad, $rfc, $cedula);
+			$rspta=$doctor->insertar($idusuario,$especialidad, $rfc, $cedula,$_SESSION['idusuario']);
 			echo $rspta ? "doctor registrado" : "doctor no se pudo registrar";
 		}
 		else {
-			$rspta=$doctor->editar($iddoctor,$idusuario,$especialidad, $rfc, $cedula);
+			$rspta=$doctor->editar($iddoctor,$idusuario,$especialidad, $rfc, $cedula,$_SESSION['idusuario']);
 			echo $rspta ? "doctor actualizado" : "doctor no se pudo actualizar";
 		}
 	break;
@@ -55,7 +61,9 @@ switch ($_GET["op"]){
  				"2"=>$reg->RFC,
 				"3"=>$reg->Cedula_Profesional,
 				"4"=>($reg->Condicion)?'<span class="label bg-green">Activado</span>':
- 				'<span class="label bg-red">Desactivado</span>'
+ 				'<span class="label bg-red">Desactivado</span>',
+				"5"=>$reg->Fecha_Modificacion,
+				"6"=>($usuario->getnombre($reg->ID_Modificacion))['Nombre'],
  				);
  		}
  		$results = array(

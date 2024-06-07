@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 07-06-2024 a las 06:36:38
+-- Tiempo de generación: 07-06-2024 a las 08:29:03
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -33,15 +33,17 @@ CREATE TABLE `doctor` (
   `Especialidad` varchar(100) DEFAULT NULL,
   `RFC` varchar(13) DEFAULT NULL,
   `Cedula_Profesional` varchar(20) DEFAULT NULL,
-  `Condicion` tinyint(1) DEFAULT NULL
+  `Condicion` tinyint(1) DEFAULT NULL,
+  `Fecha_Modificacion` date NOT NULL DEFAULT current_timestamp(),
+  `ID_Modificacion` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `doctor`
 --
 
-INSERT INTO `doctor` (`ID_Doctor`, `ID_Usuario`, `Especialidad`, `RFC`, `Cedula_Profesional`, `Condicion`) VALUES
-(1, 2, 'Oftalmología', 'LOAA760101XYZ', '1234567', 1);
+INSERT INTO `doctor` (`ID_Doctor`, `ID_Usuario`, `Especialidad`, `RFC`, `Cedula_Profesional`, `Condicion`, `Fecha_Modificacion`, `ID_Modificacion`) VALUES
+(1, 2, 'Oftalmología', 'LOAA760101XYZ', '1234567', 1, '2024-06-07', 11);
 
 -- --------------------------------------------------------
 
@@ -60,15 +62,17 @@ CREATE TABLE `exploracion_fisica` (
   `Iris_Porcion_Ciliar` text DEFAULT NULL,
   `Cristalinos` text DEFAULT NULL,
   `Vitreo` text DEFAULT NULL,
-  `Fondo_Ojo` text DEFAULT NULL
+  `Fondo_Ojo` text DEFAULT NULL,
+  `Fecha_Modificacion` date NOT NULL DEFAULT current_timestamp(),
+  `ID_Modificacion` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `exploracion_fisica`
 --
 
-INSERT INTO `exploracion_fisica` (`ID_Exploracion`, `ID_Paciente`, `Vias_Lagrimales`, `Parpados`, `Globo_Ocular`, `Conjuntivas`, `Corneas`, `Iris_Porcion_Ciliar`, `Cristalinos`, `Vitreo`, `Fondo_Ojo`) VALUES
-(2, 1, 'funcionales', 'bien', 'sano', 'si', 'bien', 'mal estado', 'si', 'no', 'impecable');
+INSERT INTO `exploracion_fisica` (`ID_Exploracion`, `ID_Paciente`, `Vias_Lagrimales`, `Parpados`, `Globo_Ocular`, `Conjuntivas`, `Corneas`, `Iris_Porcion_Ciliar`, `Cristalinos`, `Vitreo`, `Fondo_Ojo`, `Fecha_Modificacion`, `ID_Modificacion`) VALUES
+(2, 1, 'funcionales', 'bien', 'sano', 'si', 'bien', 'mal estado', 'si', 'no', 'impecable', '2024-06-07', 11);
 
 -- --------------------------------------------------------
 
@@ -89,15 +93,17 @@ CREATE TABLE `exploracion_funcional` (
   `Subjetivo_OD` varchar(50) DEFAULT NULL,
   `Subjetivo_OI` varchar(50) DEFAULT NULL,
   `Add_OD_AV` varchar(50) DEFAULT NULL,
-  `Add_OI_AV` varchar(50) DEFAULT NULL
+  `Add_OI_AV` varchar(50) DEFAULT NULL,
+  `Fecha_Modificacion` date NOT NULL DEFAULT current_timestamp(),
+  `ID_Modificacion` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `exploracion_funcional`
 --
 
-INSERT INTO `exploracion_funcional` (`ID_Exploracion_Funcional`, `ID_Paciente`, `Pupilas_PP`, `Pupilas_C_Rup`, `Pupilas_Rec`, `Queratometria_OD`, `Queratometria_OI`, `Retinoscopia_OD`, `Retinoscopia_OI`, `Subjetivo_OD`, `Subjetivo_OI`, `Add_OD_AV`, `Add_OI_AV`) VALUES
-(1, 1, '2', '2', '2', '3', '3', '4', '4', '5', '5', '6', '6');
+INSERT INTO `exploracion_funcional` (`ID_Exploracion_Funcional`, `ID_Paciente`, `Pupilas_PP`, `Pupilas_C_Rup`, `Pupilas_Rec`, `Queratometria_OD`, `Queratometria_OI`, `Retinoscopia_OD`, `Retinoscopia_OI`, `Subjetivo_OD`, `Subjetivo_OI`, `Add_OD_AV`, `Add_OI_AV`, `Fecha_Modificacion`, `ID_Modificacion`) VALUES
+(1, 1, '2', '2', '2', '3', '3', '4', '4', '5', '5', '6', '6', '2024-06-07', 11);
 
 -- --------------------------------------------------------
 
@@ -136,15 +142,17 @@ CREATE TABLE `historia_ocular` (
   `Sexo` enum('Masculino','Femenino') DEFAULT NULL,
   `Ocupacion` varchar(100) DEFAULT NULL,
   `Graduacion_Usa` tinyint(1) DEFAULT NULL,
-  `Fecha_Graduacion` date DEFAULT NULL
+  `Fecha_Graduacion` date DEFAULT NULL,
+  `Fecha_Modificacion` date NOT NULL DEFAULT current_timestamp(),
+  `ID_Modificacion` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `historia_ocular`
 --
 
-INSERT INTO `historia_ocular` (`ID_Historia_Ocular`, `ID_Paciente`, `Interrogatorio`, `Historia_General`, `Edad`, `Sexo`, `Ocupacion`, `Graduacion_Usa`, `Fecha_Graduacion`) VALUES
-(3, 1, 'No presenta sintomas', 'miopia y astimagtismo', 25, 'Masculino', 'Maestro', 0, '2022-10-24');
+INSERT INTO `historia_ocular` (`ID_Historia_Ocular`, `ID_Paciente`, `Interrogatorio`, `Historia_General`, `Edad`, `Sexo`, `Ocupacion`, `Graduacion_Usa`, `Fecha_Graduacion`, `Fecha_Modificacion`, `ID_Modificacion`) VALUES
+(3, 1, 'No presenta sintomas', 'miopia y astimagtismo', 25, 'Masculino', 'Maestro', 0, '2022-10-24', '2024-06-07', 11);
 
 -- --------------------------------------------------------
 
@@ -164,15 +172,17 @@ CREATE TABLE `lente_contacto` (
   `PL` varchar(50) DEFAULT NULL,
   `Color` varchar(50) DEFAULT NULL,
   `AV` varchar(50) DEFAULT NULL,
-  `Observaciones` text DEFAULT NULL
+  `Observaciones` text DEFAULT NULL,
+  `Fecha_Modificacion` date NOT NULL DEFAULT current_timestamp(),
+  `ID_Modificacion` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `lente_contacto`
 --
 
-INSERT INTO `lente_contacto` (`ID_Lente`, `ID_Paciente`, `Radio`, `Diam`, `CP`, `RX`, `Grueso`, `ZO`, `PL`, `Color`, `AV`, `Observaciones`) VALUES
-(2, 1, '2', '2', '2', '2', '2', '2', '2', 'verde', '2', 'No hay Observaciones');
+INSERT INTO `lente_contacto` (`ID_Lente`, `ID_Paciente`, `Radio`, `Diam`, `CP`, `RX`, `Grueso`, `ZO`, `PL`, `Color`, `AV`, `Observaciones`, `Fecha_Modificacion`, `ID_Modificacion`) VALUES
+(2, 1, '2', '2', '2', '2', '2', '2', '2', 'verde', '2', 'No hay Observaciones', '2024-06-07', 11);
 
 -- --------------------------------------------------------
 
@@ -197,16 +207,18 @@ CREATE TABLE `ojo` (
   `Agudeza_Visual_S_L` varchar(50) DEFAULT NULL,
   `Agudeza_Visual_C` varchar(50) DEFAULT NULL,
   `Agudeza_Visual_L` varchar(50) DEFAULT NULL,
-  `Agudeza_Visual_C_C` varchar(50) DEFAULT NULL
+  `Agudeza_Visual_C_C` varchar(50) DEFAULT NULL,
+  `Fecha_Modificacion` date NOT NULL DEFAULT current_timestamp(),
+  `ID_Modificacion` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `ojo`
 --
 
-INSERT INTO `ojo` (`ID_Ojo`, `ID_Paciente`, `Tipo`, `Esferico`, `Cilindrico`, `Eje`, `Prisma`, `Altura`, `Oblea`, `Color`, `AV`, `PIO`, `Estereopsis`, `Agudeza_Visual_S_L`, `Agudeza_Visual_C`, `Agudeza_Visual_L`, `Agudeza_Visual_C_C`) VALUES
-(1, 1, 'OD', 2.30, 2.00, 2.00, 2.00, 2.50, 2.00, 'azul', '2', '2', '4', '2', '2', '2', '2'),
-(2, 1, 'OI', 1.50, 1.50, 1.50, 1.50, 1.50, 1.50, 'azul', '2.5', '3', '4', '2.5', '2.5', '2.2', '2.5');
+INSERT INTO `ojo` (`ID_Ojo`, `ID_Paciente`, `Tipo`, `Esferico`, `Cilindrico`, `Eje`, `Prisma`, `Altura`, `Oblea`, `Color`, `AV`, `PIO`, `Estereopsis`, `Agudeza_Visual_S_L`, `Agudeza_Visual_C`, `Agudeza_Visual_L`, `Agudeza_Visual_C_C`, `Fecha_Modificacion`, `ID_Modificacion`) VALUES
+(1, 1, 'OD', 2.30, 2.00, 2.00, 2.00, 2.50, 2.00, 'azul', '2', '2', '4', '2', '2', '2', '2', '2024-06-07', 11),
+(2, 1, 'OI', 1.50, 1.50, 1.50, 1.50, 1.50, 1.50, 'azul', '2.5', '3', '4', '2.5', '2.5', '2.2', '2.5', '2024-06-07', 11);
 
 -- --------------------------------------------------------
 
@@ -224,15 +236,17 @@ CREATE TABLE `paciente` (
   `Celular` varchar(15) DEFAULT NULL,
   `RFC` varchar(13) DEFAULT NULL,
   `FN` date DEFAULT NULL,
-  `Condicion` tinyint(1) DEFAULT NULL
+  `Condicion` tinyint(1) DEFAULT NULL,
+  `Fecha_Modificacion` date NOT NULL DEFAULT current_timestamp(),
+  `ID_Modificacion` int(11) NOT NULL DEFAULT 3
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `paciente`
 --
 
-INSERT INTO `paciente` (`ID_Paciente`, `ID_Usuario`, `Colonia`, `Ciudad`, `CP`, `Edo`, `Celular`, `RFC`, `FN`, `Condicion`) VALUES
-(1, 1, 'Colonia Centro', 'Ciudad de México', '12345', 'CDMX', '555-5678', 'JUAP880101HDF', '1988-01-01', 1);
+INSERT INTO `paciente` (`ID_Paciente`, `ID_Usuario`, `Colonia`, `Ciudad`, `CP`, `Edo`, `Celular`, `RFC`, `FN`, `Condicion`, `Fecha_Modificacion`, `ID_Modificacion`) VALUES
+(1, 1, 'Colonia Centro', 'Ciudad de México', '12345', 'CDMX', '555-5678', 'JUAP880101HDF', '1988-01-01', 1, '2024-06-07', 11);
 
 -- --------------------------------------------------------
 
@@ -271,15 +285,17 @@ CREATE TABLE `receta` (
   `Armazon` varchar(100) DEFAULT NULL,
   `Color_Armazon` varchar(50) DEFAULT NULL,
   `Tamaño_y_Pte` varchar(100) DEFAULT NULL,
-  `Original` varchar(100) DEFAULT NULL
+  `Original` varchar(100) DEFAULT NULL,
+  `Fecha_Modificacion` date NOT NULL DEFAULT current_timestamp(),
+  `ID_Modificacion` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `receta`
 --
 
-INSERT INTO `receta` (`ID_Receta`, `ID_Paciente`, `ID_Doctor`, `Fecha`, `Cristal`, `Plastico`, `Armazon`, `Color_Armazon`, `Tamaño_y_Pte`, `Original`) VALUES
-(2, 1, 1, '2142-12-04', 1, 0, 'de acero', 'azul', 'grande', 'original');
+INSERT INTO `receta` (`ID_Receta`, `ID_Paciente`, `ID_Doctor`, `Fecha`, `Cristal`, `Plastico`, `Armazon`, `Color_Armazon`, `Tamaño_y_Pte`, `Original`, `Fecha_Modificacion`, `ID_Modificacion`) VALUES
+(2, 1, 1, '2142-12-04', 1, 0, 'de acero', 'azul', 'grande', 'original', '2024-06-07', 11);
 
 -- --------------------------------------------------------
 
@@ -306,8 +322,8 @@ CREATE TABLE `usuario` (
 
 INSERT INTO `usuario` (`ID_Usuario`, `Nombre`, `Direccion`, `Tel`, `Email`, `Tipo`, `Username`, `Password`, `Fecha_Modificacion`, `ID_Modificacion`) VALUES
 (1, 'Juan Perez', 'Calle Falsa 123', '555-1234', 'juan.perez@example.com', 'Cliente', 'juanp', 'ef92b778bafe771e89245b89ecbc08a44a4e166c06659911881f383d4473e94f', '2024-06-07', 11),
-(2, 'Dr. Ana Lopez', 'Avenida Principal 456', '555-8765', 'ana.lopez@example.com', 'Doctor', 'analopez', 'ef92b778bafe771e89245b89ecbc08a44a4e166c06659911881f383d4473e94f', '2024-06-07', 11),
-(11, 'admin', 'admin', 'admin', 'admin', 'Admin', 'admin', '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918', '2024-06-06', 2);
+(2, 'Dr. Ana Lopez', 'Avenida Principal 456', '555-8765', 'ana.lopez@example.com', 'Doctor', 'analopez', '9878d344400c00f8bab1a4ba1a3488b3ace88aea983e3d94ba1c781e09ba32bb', '2024-06-07', 2),
+(11, 'admin', 'admin', 'admin', 'admin', 'Admin', 'admin', '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918', '2024-06-07', 11);
 
 -- --------------------------------------------------------
 
@@ -326,14 +342,14 @@ CREATE TABLE `usuario_permiso` (
 --
 
 INSERT INTO `usuario_permiso` (`idusuario_permiso`, `idusuario`, `idpermiso`) VALUES
-(136, 11, 1),
-(137, 11, 2),
-(138, 11, 3),
-(139, 11, 4),
 (140, 1, 2),
 (141, 1, 4),
-(142, 2, 1),
-(143, 2, 2);
+(144, 11, 1),
+(145, 11, 2),
+(146, 11, 3),
+(147, 11, 4),
+(156, 2, 1),
+(157, 2, 2);
 
 --
 -- Índices para tablas volcadas
@@ -488,7 +504,7 @@ ALTER TABLE `permiso`
 -- AUTO_INCREMENT de la tabla `receta`
 --
 ALTER TABLE `receta`
-  MODIFY `ID_Receta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `ID_Receta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`
@@ -500,7 +516,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `usuario_permiso`
 --
 ALTER TABLE `usuario_permiso`
-  MODIFY `idusuario_permiso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=144;
+  MODIFY `idusuario_permiso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=158;
 
 --
 -- Restricciones para tablas volcadas

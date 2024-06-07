@@ -40,6 +40,8 @@ if ($_SESSION['acceso']==1)
                             <th>RFC</th>
                             <th>FN</th>  
                             <th>Estado</th>
+                            <th>Fecha Modificacion</th>
+                            <th>Modificado por</th>   
                           </thead>
                           <tbody>                            
                           </tbody>
@@ -52,7 +54,9 @@ if ($_SESSION['acceso']==1)
                             <th>Celular</th>
                             <th>RFC</th>
                             <th>FN</th>
-                            <th>Estado</th>                                      
+                            <th>Estado</th>
+                            <th>Fecha Modificacion</th>
+                            <th>Modificado por</th>                                         
                           </tfoot>
                         </table>
                     </div>
