@@ -52,7 +52,7 @@ switch ($_GET["op"]){
 	break;
 
 	case 'listar':
-		$rspta=$historia->listar();
+		$rspta=$historia->listartodo();
  		//Vamos a declarar un array
  		$data= Array();
  		while ($reg=$rspta->fetch_object()){
@@ -65,6 +65,56 @@ switch ($_GET["op"]){
 				"5"=>$reg->Ocupacion,
  				"6"=>($reg->Graduacion_Usa == 1? 'Si': 'No'),
 				"7"=>$reg->Fecha_Graduacion,
+				"8"=>$reg->Pupilas_PP,
+				"9"=>$reg->Pupilas_C_Rup,
+ 				"10"=>$reg->Pupilas_Rec,
+				"11"=>$reg->Queratometria_OD,
+				"12"=>$reg->Queratometria_OI,
+ 				"13"=>$reg->Retinoscopia_OD,
+				"14"=>$reg->Retinoscopia_OI,
+				"15"=>$reg->Subjetivo_OD,
+				"16"=>$reg->Subjetivo_OI,
+				"17"=>$reg->Add_OD_AV,
+				"18"=>$reg->Add_OI_AV,
+				"19"=>$reg->Vias_Lagrimales,
+				"20"=>$reg->Parpados,
+ 				"21"=>$reg->Globo_Ocular,
+				"22"=>$reg->Conjuntivas,
+				"23"=>$reg->Corneas,
+ 				"24"=>$reg->Iris_Porcion_Ciliar,
+				"25"=>$reg->Cristalinos,
+				"26"=>$reg->Vitreo,
+				"27"=>$reg->Fondo_Ojo,
+				"28"=>$reg->itipo,
+ 				"29"=>$reg->iesferico,
+				"30"=>$reg->icilindrico,
+ 				"31"=>$reg->ieje,
+				"32"=>$reg->iprisma,
+ 				"33"=>$reg->ialtura,
+				"34"=>$reg->ioblea,
+				"35"=>$reg->icolor,
+ 				"36"=>$reg->iav,
+				"37"=>$reg->ipio,
+				"38"=>$reg->iestereopsis,
+				"39"=>$reg->iavsl,
+				"40"=>$reg->iavc,
+				"41"=>$reg->iavl,
+				"42"=>$reg->iavcc,
+				"43"=>$reg->dtipo,
+ 				"44"=>$reg->desferico,
+				"45"=>$reg->dcilindrico,
+ 				"46"=>$reg->deje,
+				"47"=>$reg->dprisma,
+ 				"48"=>$reg->daltura,
+				"49"=>$reg->doblea,
+				"50"=>$reg->dcolor,
+ 				"51"=>$reg->dav,
+				"52"=>$reg->dpio,
+				"53"=>$reg->destereopsis,
+				"54"=>$reg->davsl,
+				"55"=>$reg->davc,
+				"56"=>$reg->davl,
+				"57"=>$reg->davcc,
 
  				);
  		}

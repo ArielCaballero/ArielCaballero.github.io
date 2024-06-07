@@ -54,9 +54,18 @@ Class historia
 	}
 
 	//Implementar un método para listar los registros
+
+	
 	public function listar()
 	{
 		$sql="SELECT * FROM historia_ocular";
+		return ejecutarConsulta($sql);
+	}
+
+	public function listartodo()
+	{
+		$sql="SELECT h.*, efu.*, efi.*, i.Tipo itipo, i.Esferico iesferico, i.Cilindrico icilindrico, i.Eje ieje, i.Prisma iprisma, i.Altura ialtura, i.Oblea ioblea, i.Color icolor, i.AV iav, i.PIO ipio, i.Estereopsis iestereopsis, i.Agudeza_Visual_S_L iavsl, i.Agudeza_Visual_C iavc, i.Agudeza_Visual_L iavl, i.Agudeza_Visual_C_C iavcc, d.Tipo dtipo, d.Esferico desferico, d.Cilindrico dcilindrico, d.Eje deje, d.Prisma dprisma, d.Altura daltura, d.Oblea doblea, d.Color dcolor, d.AV dav, d.PIO dpio, d.Estereopsis destereopsis, d.Agudeza_Visual_S_L davsl, d.Agudeza_Visual_C davc, d.Agudeza_Visual_L davl, d.Agudeza_Visual_C_C davcc FROM historia_ocular h, exploracion_funcional efu, exploracion_fisica efi, ojo i, ojo d 
+		WHERE h.ID_Paciente=efu.ID_Paciente AND efu.ID_Paciente=efi.ID_Paciente AND efi.ID_Paciente=i.ID_Paciente AND i.ID_Paciente=d.ID_Paciente AND i.tipo='OI' AND d.tipo='OD'" ;
 		return ejecutarConsulta($sql);
 	}
 }
