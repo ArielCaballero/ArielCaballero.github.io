@@ -49,8 +49,6 @@ switch ($_GET["op"]){
 		$rspta = $doctor->listar();
 
 		//Obtener los permisos asignados al usuario
-		//Declaramos el array para almacenar todos los permisos marcados
-		$valores=array();
 
 		//Mostramos la lista de permisos en la vista y si están o no marcados
 		while ($reg = $rspta->fetch_object())

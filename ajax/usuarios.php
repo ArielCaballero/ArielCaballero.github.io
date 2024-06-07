@@ -27,13 +27,13 @@ switch ($_GET["op"]){
 			$clavehash=hash("SHA256",$password);
 		}
 		if ($tipo =='Cliente'){
-			$permiso = array(2,4,5);
+			$permiso = array(2,4,5,7);
 		}
 		if ($tipo =='Doctor'){
-			$permiso = array(1,2,6);
+			$permiso = array(1,2,6,7);
 		}
 		if ($tipo =='Admin'){
-			$permiso = array(1,2,3,5,6);
+			$permiso = array(1,2,3,5,6,7,8);
 		}
 
 		if (empty($idusuario)){		
@@ -164,6 +164,8 @@ switch ($_GET["op"]){
 			in_array(4,$valores)?$_SESSION['misdatos']=1:$_SESSION['misdatos']=0;
 			in_array(5,$valores)?$_SESSION['agendarcita']=1:$_SESSION['agendarcita']=0;
 			in_array(6,$valores)?$_SESSION['confirmarcita']=1:$_SESSION['confirmarcita']=0;
+			in_array(7,$valores)?$_SESSION['lentes_opticos']=1:$_SESSION['lentes_opticos']=0;
+			in_array(8,$valores)?$_SESSION['agregarlentes']=1:$_SESSION['agregarlentes']=0;
 
 	    }
 	    echo json_encode($fetch);

@@ -32,13 +32,19 @@ if ($_SESSION['recetas']==1)
                         <table id="tbllistado" class="table table-striped table-bordered table-condensed table-hover">
                           <thead>
                             <th>Opciones</th>
+                            <th>Doctor</th>
+                            <th>Paciente</th>
                             <th>Fecha</th>
-                            <th>Cristal</th>
-                            <th>Plastico</th>
-                            <th>Armazon</th>
-                            <th>Color Armazon</th>
-                            <th>Tamaño y Porte</th>
-                            <th>Original</th>
+                            <th>Nombre Modelo</th>
+                            <th>Descripcion</th>
+                            <th>Color</th>
+                            <th>Material</th>
+                            <th>Precio</th>
+                            <th>Compatibilidad Facial</th>
+                            <th>Compatibilidad Altas Graduaciones</th>
+                            <th>Alto Mica</th>
+                            <th>Ancho Frente</th>
+                            <th>Largo Pata</th>
                             <th>Fecha Modificacion</th>
                             <th>Modificado por</th>                                                            
                           </thead>
@@ -46,24 +52,26 @@ if ($_SESSION['recetas']==1)
                           </tbody>
                           <tfoot>
                             <th>Opciones</th>
+                            <th>Doctor</th>
+                            <th>Paciente</th>
                             <th>Fecha</th>
-                            <th>Cristal</th>
-                            <th>Plastico</th>
-                            <th>Armazon</th>
-                            <th>Color Armazon</th>
-                            <th>Tamaño y Porte</th>
-                            <th>Original</th>
+                            <th>Nombre Modelo</th>
+                            <th>Descripcion</th>
+                            <th>Color</th>
+                            <th>Material</th>
+                            <th>Precio</th>
+                            <th>Compatibilidad Facial</th>
+                            <th>Compatibilidad Altas Graduaciones</th>
+                            <th>Alto Mica</th>
+                            <th>Ancho Frente</th>
+                            <th>Largo Pata</th>
                             <th>Fecha Modificacion</th>
                             <th>Modificado por</th>                                         
                           </tfoot>
                         </table>
                     </div>
                     <div class="panel-body" style="height: 400px;" id="formularioregistros">
-                        <form name="formulario" id="formulario" method="POST">
-                        <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                            <label>Fecha:</label>
-                            <input type="date" class="form-control" name="fecha" id="fecha">
-                          </div>
+                        <form name="formulario" id="formulario" method="POST">                        
                           <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <label>ID Paciente:</label>              
                             <input type="text" class="form-control" name="idpaciente" id="idpaciente" maxlength="11" placeholder="ID Paciente">
@@ -74,37 +82,13 @@ if ($_SESSION['recetas']==1)
                             <input type="hidden" name="idreceta" id="idreceta">                      
                           </div>                          
                           <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                            <label>Cristal:</label>  
+                            <label>Modelo:</label>  
                             <br>                
-                              <select class="form-select form-control" id="cristal", name="cristal">            
-                                <option value="1">Si</option>
-                                <option value="0">No</option>
+                              <select class="form-select form-control" id="modelo", name="modelo">            
+                              
                               </select>              
                           </div>                          
-                          <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                            <label>Plastico:</label>  
-                            <br>                
-                              <select class="form-select form-control" id="plastico", name="plastico">            
-                                <option value="1">Si</option>
-                                <option value="0">No</option>
-                              </select>              
-                          </div> 
-                          <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                            <label>Armazon:</label>
-                            <input type="text" class="form-control" name="armazon" id="armazon" maxlength="100" placeholder="Armazon">
-                          </div>
-                          <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                            <label>Color Armazon:</label>
-                            <input type="text" class="form-control" name="color" id="color" maxlength="50" placeholder="Color de Armazon">
-                          </div>
-                          <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                            <label>Tamaño y Porte:</label>
-                            <input type="text" class="form-control" name="tam" id="tam" maxlength="100" placeholder="Tamaño y Porte">
-                          </div>
-                          <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                            <label>Original:</label>
-                            <input type="text" class="form-control" name="original" id="original" maxlength="100" placeholder="Original">
-                          </div>                          
+                                              
                           <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <button class="btn btn-primary" type="submit" id="btnGuardar"><i class="fa fa-save"></i> Guardar</button>
 
@@ -129,7 +113,7 @@ else
 require 'footer.php';
 ?>
 
-<script type="text/javascript" src="scripts/receta.js"></script>
+<script type="text/javascript" src="scripts/recetas.js"></script>
 <?php 
 }
 ob_end_flush();

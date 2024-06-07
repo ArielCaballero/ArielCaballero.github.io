@@ -12,24 +12,19 @@ $receta=new Receta();
 $idreceta=isset($_POST["idreceta"])? limpiarCadena($_POST["idreceta"]):"";
 $idpaciente=isset($_POST["idpaciente"])? limpiarCadena($_POST["idpaciente"]):"";
 $iddoctor=isset($_POST["iddoctor"])? limpiarCadena($_POST["iddoctor"]):"";
-$fecha=isset($_POST["fecha"])? limpiarCadena($_POST["fecha"]):"";
-$cristal=isset($_POST["cristal"])? limpiarCadena($_POST["cristal"]):"";
-$plastico=isset($_POST["plastico"])? limpiarCadena($_POST["plastico"]):"";
-$armazon=isset($_POST["armazon"])? limpiarCadena($_POST["armazon"]):"";
-$color=isset($_POST["color"])? limpiarCadena($_POST["color"]):"";
-$tam=isset($_POST["tam"])? limpiarCadena($_POST["tam"]):"";
-$original=isset($_POST["original"])? limpiarCadena($_POST["original"]):"";
+$idmodelo=isset($_POST["modelo"])? limpiarCadena($_POST["modelo"]):"";
 
 switch ($_GET["op"]){
 	case 'guardaryeditar':
 		if (empty($idreceta)){
-			$rspta=$receta->insertar($idpaciente, $iddoctor,$fecha,$cristal,$plastico,$armazon,$color, $tam, $original, $_SESSION['idusuario']);
+			$rspta=$receta->insertar($idpaciente, $iddoctor,$idmodelo, $_SESSION['idusuario']);
 			echo $rspta ? "Receta registrada" : "Receta no se pudo registrar";
 		}
 		else {
-			$rspta=$receta->editar($idreceta,$idpaciente, $iddoctor,$fecha,$cristal,$plastico,$armazon,$color, $tam, $original, $_SESSION['idusuario']);
+			$rspta=$receta->editar($idreceta,$idpaciente, $iddoctor,$idmodelo, $_SESSION['idusuario']);
 			echo $rspta ? "Receta actualizada" : "Receta no se pudo actualizar";
 		}
+	break;
 	break;
 
 	// case 'desactivar':
@@ -57,7 +52,26 @@ switch ($_GET["op"]){
  		break;
 	break;
 
+	case 'listarmodelos':
+		//Obtenemos todos los permisos de la tabla permisos
+
+		$rspta = $receta->listarmodelos();
+
+		//Mostramos la lista de permisos en la vista y si están o no marcados
+		while ($reg = $rspta->fetch_object())
+				{
+					echo '<option value="'.$reg->id_modelo.'">'.($reg->nombre_modelo).'</option>';
+				}
+	break;
+	break;
+
 	case 'listar':
+
+		require_once "../modelos/doctor.php";
+		$doctor=new Doctor();
+		require_once "../modelos/paciente.php";
+		$paciente=new Paciente();
+
 		$rspta=$receta->listar();
  		//Vamos a declarar un array
  		$data= Array();
@@ -65,15 +79,21 @@ switch ($_GET["op"]){
  			$data[]=array(
  				"0"=>'<button class="btn btn-warning" onclick="mostrar('.$reg->ID_Receta.')"><i class="fa fa-pencil"></i></button>'.
 				 ' <button class="btn btn-danger" onclick="eliminar('.$reg->ID_Receta.')"><i class="fa fa-close"></i></button>',
- 				"1"=>$reg->Fecha,
- 				"2"=>($reg->Cristal == 1? 'Si': 'No'),
-				"3"=>($reg->Plastico == 1? 'Si': 'No'),
- 				"4"=>$reg->Armazon,
-				"5"=>$reg->Color_Armazon,
- 				"6"=>$reg->Tamaño_y_Pte,
-				"7"=>$reg->Original,
-				"8"=>$reg->Fecha_Modificacion,
-				"9"=>($usuario->getnombre($reg->ID_Modificacion))['Nombre'],
+ 				"1"=>($usuario->getnombre($doctor->getusuario($reg->ID_Doctor)['ID_Usuario']))['Nombre'],
+				"2"=>($usuario->getnombre($paciente->getusuario($reg->ID_Paciente)['ID_Usuario']))['Nombre'],
+				"3"=>$reg->Fecha,
+				"4"=>$reg->nombre_modelo,
+				"5"=>$reg->descripcion,
+				"6"=>$reg->color,
+				"7"=>$reg->material,
+				"8"=>$reg->precio,
+				"9"=>$reg->compatibilidad_facial,
+				"10"=>$reg->compatibilidad_altas_graduaciones,
+				"11"=>$reg->alto_mica,
+				"12"=>$reg->ancho_frente,
+				"13"=>$reg->largo_pata,
+				"14"=>$reg->Fecha_Modificacion,
+				"15"=>($usuario->getnombre($reg->ID_Modificacion))['Nombre'],
  				);
  		}
  		$results = array(
@@ -83,6 +103,7 @@ switch ($_GET["op"]){
  			"aaData"=>$data);
  		echo json_encode($results);
 
+	break;
 	break;
 }
 ?>

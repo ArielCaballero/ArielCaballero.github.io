@@ -177,6 +177,17 @@ if (strlen(session_id()) < 1)
             </li>';
               }
             ?>
+            <?php
+            if ($_SESSION['lentes_opticos']==1){
+              echo
+              '<li class="treeview">
+                <a href="lentesOpticos.php">
+                  <i class="fa fa-eye"></i>
+                  <span>Lentes Opticos</span>
+                </a>
+              </li>';
+            }
+          ?>  
             <li class="treeview">
                   <a href="mi_usuario.php">
                     <i class="fa fa-user"></i>

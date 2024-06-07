@@ -2,12 +2,16 @@ var tabla;
 
 //Función que se ejecuta al inicio
 function init(){
+
 	mostrarform(false);
 	listar();
 
 	$("#formulario").on("submit",function(e)
 	{
 		guardaryeditar(e);	
+	})
+	$.post("../ajax/receta.php?op=listarmodelos",function(r){
+		$("#modelo").html(r);
 	})
 }
 
@@ -17,13 +21,7 @@ function limpiar()
 	$("#idreceta").val("");
 	$("#idpaciente").val("");
 	$("#iddoctor").val("");
-	$("#fecha").val("");
-	$("#cristal").val("");
-	$("#plastico").val("");
-	$("#armazon").val("");
-	$("#color").val("");
-	$("#tam").val("");
-	$("#original").val("");
+	$("#modelo").val("");
 }
 
 //Función mostrar formulario
@@ -116,15 +114,11 @@ function mostrar(idreceta)
 		$("#idreceta").val(data.ID_Receta);
 		$("#idpaciente").val(data.ID_Paciente);
 		$("#iddoctor").val(data.ID_Doctor);
-		$("#fecha").val(data.Fecha);
-		$("#cristal").val(data.Cristal);
-		$("#plastico").val(data.Plastico);
-		$("#armazon").val(data.Armazon);
-		$("#color").val(data.Color_Armazon);
-		$("#tam").val(data.Tamaño_y_Pte);
-		$("#original").val(data.Original);
 
- 	})
+ 	});
+	 $.post("../ajax/receta.php?op=listarmodelos",function(r){
+		$("#modelo").html(r);
+});
 }
 
 //Función para desactivar registros
@@ -167,6 +161,5 @@ function eliminar(idreceta)
         }
 	})
 }
-
 
 init();

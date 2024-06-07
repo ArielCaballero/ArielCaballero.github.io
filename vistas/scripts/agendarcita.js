@@ -2,6 +2,7 @@ var tabla;
 
 //Función que se ejecuta al inicio
 function init(){
+	
 	mostrarform(false);
 	listar();
 
