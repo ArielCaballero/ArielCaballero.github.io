@@ -65,15 +65,16 @@ switch ($_GET["op"]){
  		while ($reg=$rspta->fetch_object()){
  			$data[]=array(
  				"0"=>'<button class="btn btn-warning" onclick="mostrar('.$reg->ID_Historia_Ocular.')"><i class="fa fa-pencil"></i></button>',
- 				"1"=>$reg->Interrogatorio,
-				"2"=>$reg->Historia_General,
- 				"3"=>$reg->Edad,
-				"4"=>$reg->Sexo,
-				"5"=>$reg->Ocupacion,
- 				"6"=>($reg->Graduacion_Usa == 1? 'Si': 'No'),
-				"7"=>$reg->Fecha_Graduacion,
-				"8"=>$reg->Fecha_Modificacion,
-				"9"=>($usuario->getnombre($reg->ID_Modificacion))['Nombre'],
+ 				"1"=>($usuario->getnombre($historia->getusuario($reg->ID_Paciente)['ID_Usuario']))['Nombre'],
+				"2"=>$reg->Interrogatorio,
+				"3"=>$reg->Historia_General,
+ 				"4"=>$reg->Edad,
+				"5"=>$reg->Sexo,
+				"6"=>$reg->Ocupacion,
+ 				"7"=>($reg->Graduacion_Usa == 1? 'Si': 'No'),
+				"8"=>$reg->Fecha_Graduacion,
+				"9"=>$reg->Fecha_Modificacion,
+				"10"=>($usuario->getnombre($reg->ID_Modificacion))['Nombre'],
 
  				);
  		}

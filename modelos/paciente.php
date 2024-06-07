@@ -51,6 +51,14 @@ Class Paciente
 		return ejecutarConsultaSimpleFila($sql);
 	}
 
+	public function getusuario($idpaciente)
+	{
+		$sql="SELECT ID_Usuario FROM paciente WHERE ID_Paciente='$idpaciente'";
+		return ejecutarConsultaSimpleFila($sql);
+	}
+
+
+
 	//Implementar un método para listar los registros
 	public function listar()
 	{

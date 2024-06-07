@@ -66,17 +66,18 @@ switch ($_GET["op"]){
  		while ($reg=$rspta->fetch_object()){
  			$data[]=array(
  				"0"=>'<button class="btn btn-warning" onclick="mostrar('.$reg->ID_Exploracion.')"><i class="fa fa-pencil"></i></button>',
- 				"1"=>$reg->Vias_Lagrimales,
-				"2"=>$reg->Parpados,
- 				"3"=>$reg->Globo_Ocular,
-				"4"=>$reg->Conjuntivas,
-				"5"=>$reg->Corneas,
- 				"6"=>$reg->Iris_Porcion_Ciliar,
-				"7"=>$reg->Cristalinos,
-				"8"=>$reg->Vitreo,
-				"9"=>$reg->Fondo_Ojo,
-				"10"=>$reg->Fecha_Modificacion,
-				"11"=>($usuario->getnombre($reg->ID_Modificacion))['Nombre'],
+ 				"1"=>($usuario->getnombre($exp_fisica->getusuario($reg->ID_Paciente)['ID_Usuario']))['Nombre'],
+				"2"=>$reg->Vias_Lagrimales,
+				"3"=>$reg->Parpados,
+ 				"4"=>$reg->Globo_Ocular,
+				"5"=>$reg->Conjuntivas,
+				"6"=>$reg->Corneas,
+ 				"7"=>$reg->Iris_Porcion_Ciliar,
+				"8"=>$reg->Cristalinos,
+				"9"=>$reg->Vitreo,
+				"10"=>$reg->Fondo_Ojo,
+				"11"=>$reg->Fecha_Modificacion,
+				"12"=>($usuario->getnombre($reg->ID_Modificacion))['Nombre'],
 
  				);
  		}

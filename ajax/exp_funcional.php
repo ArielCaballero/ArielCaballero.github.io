@@ -69,19 +69,20 @@ switch ($_GET["op"]){
  		while ($reg=$rspta->fetch_object()){
  			$data[]=array(
  				"0"=>'<button class="btn btn-warning" onclick="mostrar('.$reg->ID_Exploracion_Funcional.')"><i class="fa fa-pencil"></i></button>',
- 				"1"=>$reg->Pupilas_PP,
-				"2"=>$reg->Pupilas_C_Rup,
- 				"3"=>$reg->Pupilas_Rec,
-				"4"=>$reg->Queratometria_OD,
-				"5"=>$reg->Queratometria_OI,
- 				"6"=>$reg->Retinoscopia_OD,
-				"7"=>$reg->Retinoscopia_OI,
-				"8"=>$reg->Subjetivo_OD,
-				"9"=>$reg->Subjetivo_OI,
-				"10"=>$reg->Add_OD_AV,
-				"11"=>$reg->Add_OI_AV,
-				"12"=>$reg->Fecha_Modificacion,
-				"13"=>($usuario->getnombre($reg->ID_Modificacion))['Nombre'],
+ 				"1"=>($usuario->getnombre($exp_funcional->getusuario($reg->ID_Paciente)['ID_Usuario']))['Nombre'],
+				"2"=>$reg->Pupilas_PP,
+				"3"=>$reg->Pupilas_C_Rup,
+ 				"4"=>$reg->Pupilas_Rec,
+				"5"=>$reg->Queratometria_OD,
+				"6"=>$reg->Queratometria_OI,
+ 				"7"=>$reg->Retinoscopia_OD,
+				"8"=>$reg->Retinoscopia_OI,
+				"9"=>$reg->Subjetivo_OD,
+				"10"=>$reg->Subjetivo_OI,
+				"11"=>$reg->Add_OD_AV,
+				"12"=>$reg->Add_OI_AV,
+				"13"=>$reg->Fecha_Modificacion,
+				"14"=>($usuario->getnombre($reg->ID_Modificacion))['Nombre'],
 
  				);
  		}

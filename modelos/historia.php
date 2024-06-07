@@ -27,6 +27,11 @@ Class historia
 		return ejecutarConsulta($sql);
 	}
 
+	public function getusuario($idpaciente)
+	{
+		$sql="SELECT ID_Usuario FROM paciente WHERE ID_Paciente='$idpaciente'";
+		return ejecutarConsultaSimpleFila($sql);
+	}
 	//Implementamos un método para desactivar categorías
 	// public function desactivar($idhistoria)
 	// {

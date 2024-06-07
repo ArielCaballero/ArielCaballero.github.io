@@ -32,6 +32,7 @@ if ($_SESSION['datospaciente']==1)
                         <table id="tbllistado" class="table table-striped table-bordered table-condensed table-hover">
                           <thead>
                             <th>Opciones</th>
+                            <th>Paciente</th>
                             <th>Tipo</th>
                             <th>Esferico</th>
                             <th>Cilindrico</th>
@@ -54,6 +55,7 @@ if ($_SESSION['datospaciente']==1)
                           </tbody>
                           <tfoot>
                           <th>Opciones</th>
+                          <th>Paciente</th>
                             <th>Tipo</th>
                             <th>Esferico</th>
                             <th>Cilindrico</th>
